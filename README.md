@@ -26,3 +26,8 @@ https://albmarti.github.io/
 
 ## Contacto
 Para cualquier consulta, escribe a contacto@lauramartinezpsicologia.com o utiliza el enlace de WhatsApp en la web.
+
+
+## Documentacion de como usar GitHub Pages :
+1. https://docs.github.com/en/pages/quickstart
+2. https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site

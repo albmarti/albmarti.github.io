@@ -28,7 +28,7 @@ https://albmarti.github.io/
 5. GitHub Pages actualizará la web automáticamente en unos minutos.
 
 ## Contacto
-Para cualquier consulta, escribe a lauramartinezortegas@gmail.com o utiliza el enlace de WhatsApp en la web.
+Para cualquier consulta, escribe a contacto@lauramartinezortegapsicologia.es o utiliza el enlace de WhatsApp en la web.
 
 ---
 **Páginas legales:**

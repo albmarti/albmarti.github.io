@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/Logo.png" sizes="32x32">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Psicología Online con Empatía y Profesionalismo. Reserva tu sesión con Laura Martínez Ortega.">
+    <style>
+        .contact-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .contact-card {
+            background: #f3efeb;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(90,75,60,0.07);
+            padding: 1.5rem 2rem;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.7rem;
+            color: #5a4b3c;
+        }
+        .contact-card a {
+            color: #5a4b3c;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+        header {
+            background-color: #ffffff;
+            padding: 2rem 0 2rem 0;
+        }
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            gap: 2rem;
+        }
+        .header-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        header img {
+            max-width: 100px;
+            height: auto;
+            margin-left: 1.5rem;
+        }
+        @media (max-width: 800px) {
+            .header-flex {
+                flex-direction: column;
+                align-items: center !important;
+                gap: 1rem;
+            }
+            header img {
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+            }
+            .header-info {
+                align-items: center;
+            }
+            header h1, header p {
+                text-align: center;
+                align-items: center;
+            }
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            top: 2.2rem;
+            right: 2rem;
+            z-index: 1001;
+        }
+        .hamburger span {
+            height: 4px;
+            width: 30px;
+            background: #5a4b3c;
+            margin: 5px 0;
+            border-radius: 2px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        header img {
+            max-width: 100px;
+            height: auto;
+            margin-left: 1.5rem;
+        }
+        }
+        nav {
+            background-color: #e8dcd1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+            padding-left: 0;
+        }
+        nav a {
+            padding: 1rem 1.5rem 1rem 0;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a:focus {
+            color: #5a4b3c;
+        }
+        nav.open {
+            display: flex;
+        }
+        section {
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+        }
+        section h2 {
+            color: #5a4b3c;
+        }
+        .cta {
+            background-color: #e8dcd1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(90,75,60,0.07);
+        }
+        .cta h2 {
+            margin-bottom: 1rem;
+        }
+        .cta p {
+            margin-bottom: 1.5rem;
+        }
+            .cta {
+                max-width: 95vw;
+                padding: 2rem 0.5rem;
+            }
+        .cta a {
+            background-color: #5a4b3c;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+        }
+        .cta a:hover, .cta a:focus {
+            background-color: #7a6650;
+        }
+        footer {
+            background-color: #f3efeb;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+        .legal-links {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .legal-links a {
+            color: #5a4b3c;
+            text-decoration: underline;
+            margin: 0 0.5rem;
+        }
+        @media (max-width: 800px) {
+            .hamburger {
+                display: flex;
+            }
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #e8dcd1;
+                z-index: 1000;
+                padding-left: 0;
+            }
+            nav.open {
+                display: flex;
+            }
+            nav a {
+                width: 100%;
+                padding: 1rem 2rem;
+                border-bottom: 1px solid #c2b6a6;
+            }
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+        }
+        /* Sobre mí flex layout */
+        .sobre-mi-flex {
+          display: flex;
+          align-items: flex-start;
+          gap: 2.5rem;
+          justify-content: space-between;
+          flex-wrap: wrap;
+        }
+        .sobre-mi-texto {
+          flex: 1 1 320px;
+          min-width: 260px;
+        }
+        .sobre-mi-img {
+          flex: 0 0 260px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+        }
+        @media (max-width: 900px) {
+          .sobre-mi-flex {
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+          }
+          .sobre-mi-img {
+            margin-left: 0;
+            margin-bottom: 1rem;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-flex">
+        <div class="header-info">
+            <h1 style="margin-bottom: 0.3rem;">Laura Martínez Ortega</h1>
+            <p style="margin-top: 0; font-size: 1rem;">Psicología Online con Empatía y Profesionalismo</p>
+        </div>
+        <img src="images/Logo.svg" alt="Logo Laura Martínez Ortega" style="max-width:100px;height:auto;margin-left:1.5rem;">
+        <div class="hamburger" id="hamburger" aria-label="Abrir menú" tabindex="0" role="button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<nav id="mainNav" aria-label="Navegación principal">
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#reserva">Reserva</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<section id="inicio">
+    <h2>¡Te doy la bienvenida!</h2>
+    <p>Este es un espacio seguro para tu bienestar emocional, ayudo a personas que estén en búsqueda o transitandola maternidad.</p>
+    <p>Acompañamiento psicológico online desde la empatía, la ciencia y el corazón, para todas las personas</p>
+</section>
+
+<section id="sobre-mi">
+  <div class="sobre-mi-flex">
+    <div class="sobre-mi-texto">
+      <h2>Sobre mí</h2>
+      <p>Soy Laura, soy <strong>Psicóloga General Sanitaria</strong>, colegiada en el Colegio Oficial de Psicología de la Comunidad Valenciana, con formación en <strong>Psicología Perinatal</strong> y <strong>Neuropsicología Clínica</strong>.</p>
+      <p>Durante años he trabajado como neuropsicóloga clínica, acompañando a personas con daño cerebral adquirido, patología dual y trastornos del neurodesarrollo. Cada uno de esos procesos me ha enseñado algo valioso sobre la <strong>resiliencia</strong>, la <strong>vulnerabilidad</strong> y la <strong>fuerza del ser humano</strong>.</p>
+      <p>Mi propia maternidad marcó un antes y un después. Fue una experiencia profundamente transformadora que me llevó a reenfocar mi vocación. Viví en carne propia lo intensas que pueden ser las emociones en esta etapa vital, los desafíos, las dudas, los miedos... pero también el amor, la conexión y la necesidad de sentirse acompañada. Fue ahí donde nació mi deseo de acompañar a otras personas que, como yo, están transitando el camino de la maternidad.</p>
+      <p>Desde entonces, decidí enfocar mi labor en acompañar a otras mujeres, familias y personas que están transitando esta etapa vital. Porque creo firmemente que no tenemos que vivir la maternidad ni la crianza en soledad. Merecemos espacios de escucha, de comprensión y de sostén.</p>
+      <!--
+      <p>Hoy estoy especializada en <strong>psicología perinatal</strong>, y tengo especial sensibilidad hacia quienes están viviendo un proceso de <strong>reproducción asistida</strong>. Sé que no es un camino fácil: está lleno de esperanza, pero también de incertidumbre, silencios, miedos, pruebas y decisiones difíciles. Muchas veces se vive en soledad, sin un espacio donde poder hablar sin juicios ni tabúes.</p>
+      -->
+      <p>Por eso he decidido crear un <strong>espacio terapéutico online pensado para ti</strong>: una consulta cálida, respetuosa y segura, donde puedas ser tú misma, con tus emociones a flor de piel, tus dudas, tu historia única. Mi objetivo es que te sientas sostenida, comprendida y acompañada durante todo el proceso, ya sea que estés comenzando con los tratamientos, en medio del recorrido, atravesando un duelo, o disfrutando —con todo lo que eso implica— del embarazo tan deseado.</p>
+      <p>Actualmente sigo formándome en reproducción asistida para ofrecerte un acompañamiento actualizado, sensible y humano.</p>
+      <p><strong>Estás en tu momento. Y no tienes por qué vivirlo sola.</strong></p>
+    </div>
+    <div class="sobre-mi-img">
+      <div style="width:260px;height:260px;display:flex;align-items:center;justify-content:center;border:2px dashed #bdbdbd;border-radius:12px;background:#faf9f7;color:#bdbdbd;font-size:1.1rem;margin-left:2rem;text-align:center;">
+        <span>Próximamente<br>foto profesional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+    <h2>Servicios</h2>
+    <ul>
+        <li>Terapia Psicológica con Adultos</li>
+        <li>Psicología perinatal</li>
+        <li>Proceso de reproducción asistida</li>
+    </ul>
+    <p><strong>Modalidad:</strong> Online por videollamada<br>
+    <strong>Duración:</strong> 50 minutos<br>
+    <strong>Frecuencia:</strong> Semanal o quincenal</p>
+</section>
+
+<section id="reserva" class="cta">
+    <h2>Reserva tu sesión</h2>
+    <p>Elige el día y la hora que mejor te venga. Recibe el enlace de videollamada directamente en tu correo.</p>
+    <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background-color:#25D366;color:white;padding:1rem 2rem;text-decoration:none;border-radius:5px;font-size:1.1rem;font-weight:bold;transition:background 0.2s;box-shadow:0 2px 8px rgba(90,75,60,0.07);">
+        <img src="images/whatsapp.png" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;"> Reservar sesión por WhatsApp
+    </a>
+    <br><br>
+    <!--
+    Calendario público de Google Calendar (reemplaza la URL src por la de tu calendario público)
+    <iframe src="https://calendar.google.com/calendar/embed?src=es.spain%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMadrid" style="border: 1px solid #bdbdbd" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+    -->
+    <br>
+    <!--
+    Botón para añadir un evento al calendario
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Reserva%20de%20sesi%C3%B3n%20con%20Laura%20Mart%C3%ADnez%20Ortega&details=Reserva%20tu%20sesion%20de%20psicolog%C3%ADa%20online%20por%20videollamada%20con%20Laura%20Mart%C3%ADnez%20Ortega.&location=Online&sf=true&output=xml" target="_blank" rel="noopener" style="display:inline-block;margin-top:1rem;background:#4285F4;color:white;padding:0.8rem 1.5rem;border-radius:5px;font-weight:bold;text-decoration:none;font-size:1rem;">
+        Añadir evento a Google Calendar
+    </a>
+    -->
+    </section>
+
+<section id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Tienes dudas o quieres saber más antes de reservar?</p>
+    <div class="contact-cards">
+        <div class="contact-card">
+            <h3>Correo electrónico</h3>
+            <img src="images/email.png" alt="Email" style="width:32px;height:32px;margin-bottom:0.5rem;">
+            <a href="mailto:contacto@lauramartinezortegapsicologia.es">Email</a>
+        </div>
+        <div class="contact-card">
+            <h3>WhatsApp</h3>
+            <img src="images/whatsapp.png" alt="WhatsApp" style="width:32px;height:32px;margin-bottom:0.5rem;">
+            <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>Laura Martínez Ortega – Psicología con corazón y ciencia</p>
+    <div class="legal-links">
+        <a href="aviso-legal.html">Aviso legal</a> |
+        <a href="privacidad.html">Política de privacidad</a> |
+        <a href="cookies.html">Cookies</a>
+    </div>
+</footer>
+
+<script>
+// Menú hamburguesa
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('mainNav');
+
+function toggleMenu() {
+    nav.classList.toggle('open');
+    hamburger.classList.toggle('active');
+}
+
+hamburger.addEventListener('click', toggleMenu);
+hamburger.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+        toggleMenu();
+    }
+});
+
+// Cierra el menú al hacer clic en un enlace (en móvil)
+nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 800) {
+            nav.classList.remove('open');
+            hamburger.classList.remove('active');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

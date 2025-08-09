@@ -20,6 +20,8 @@ This is a static website for a professional psychologist, built with plain HTML 
 
 ## Conventions & Patterns
 - **Responsive design:** Uses CSS flexbox and media queries. See `.sobre-mi-flex`, `.contact-cards`, and header/footer for layout patterns.
+- **Design consistency:** Use existing styles and classes for new sections. Avoid introducing new CSS frameworks or libraries. Always use the logo.png or logo.svg for any new html elements.
+- **Accessibility:** Use semantic HTML elements (e.g., `<header>`, `<footer>`, `<nav>`, `<section>`, `<article>`). Ensure alt text for images and ARIA roles where necessary.
 - **Navigation:** Hamburger menu for mobile is implemented with a small JS snippet in `index.html`.
 - **Contact links:** WhatsApp uses wa.link for privacy; email is a mailto link with the custom domain.
 - **Image placeholders:** If a professional photo is not available, use a styled `<div>` as a placeholder (see `.sobre-mi-img`).

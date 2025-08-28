@@ -292,11 +292,14 @@
   <div class="sobre-mi-flex">
     <div class="sobre-mi-texto">
       <h2>Sobre mí</h2>
-      <p>Soy Laura, soy <strong>Psicóloga General Sanitaria</strong>, colegiada en el Colegio Oficial de Psicología de la Comunidad Valenciana <strong>CV18843</strong>, con formación en <strong>Psicología Perinatal</strong> y <strong>Neuropsicología Clínica</strong>.</p>
+      <p>Soy Laura, soy <strong>Psicóloga General Sanitaria</strong>, colegiada en el Colegio Oficial de Psicología de la Comunidad Valenciana, con formación en <strong>Psicología Perinatal</strong> y <strong>Neuropsicología Clínica</strong>.</p>
       <p>Durante años he trabajado como neuropsicóloga clínica, acompañando a personas con daño cerebral adquirido, patología dual y trastornos del neurodesarrollo. Cada uno de esos procesos me ha enseñado algo valioso sobre la <strong>resiliencia</strong>, la <strong>vulnerabilidad</strong> y la <strong>fuerza del ser humano</strong>.</p>
-      <p>Mi propia maternidad marcó un antes y un después. Fue una experiencia profundamente transformadora que me llevó a reenfocar mi vocación. Viví en carne propia lo intensas que pueden ser las emociones en esta etapa vital, los desafíos, las dudas, los miedos... pero también el amor, la conexión y la necesidad de sentirse acompañada y fue ahí donde nació mi deseo de acompañar a otras personas que, como yo, están transitando el camino de la maternidad.</p>
-      <p>Hoy estoy especializada en <strong>psicología perinatal</strong>, y con especial sensibilidad hacia quienes están viviendo un proceso de <strong>reproducción asistida</strong>. Sé que no es un camino fácil. Está lleno de esperanza, pero también de incertidumbre, silencios, miedos, pruebas y decisiones difíciles. Muchas veces se vive en soledad, sin un espacio donde poder hablar sin juicios ni tabúes.</p>
-      <p>Por eso he decidido crear un <strong>espacio terapéutico pensado para ti</strong>: una consulta cálida, respetuosa y segura, donde puedas ser tú misma, con tus emociones a flor de piel, tus dudas, tu historia única. Mi objetivo es que te sientas sostenida, comprendida y acompañada durante todo el proceso, ya sea que estés comenzando con los tratamientos, en medio del recorrido, atravesando un duelo, o disfrutando —con todo lo que eso implica— del embarazo tan deseado.</p>
+      <p>Mi propia maternidad marcó un antes y un después. Fue una experiencia profundamente transformadora que me llevó a reenfocar mi vocación. Viví en carne propia lo intensas que pueden ser las emociones en esta etapa vital, los desafíos, las dudas, los miedos... pero también el amor, la conexión y la necesidad de sentirse acompañada. Fue ahí donde nació mi deseo de acompañar a otras personas que, como yo, están transitando el camino de la maternidad.</p>
+      <p>Desde entonces, decidí enfocar mi labor en acompañar a otras mujeres, familias y personas que están transitando esta etapa vital. Porque creo firmemente que no tenemos que vivir la maternidad ni la crianza en soledad. Merecemos espacios de escucha, de comprensión y de sostén.</p>
+      <!--
+      <p>Hoy estoy especializada en <strong>psicología perinatal</strong>, y tengo especial sensibilidad hacia quienes están viviendo un proceso de <strong>reproducción asistida</strong>. Sé que no es un camino fácil: está lleno de esperanza, pero también de incertidumbre, silencios, miedos, pruebas y decisiones difíciles. Muchas veces se vive en soledad, sin un espacio donde poder hablar sin juicios ni tabúes.</p>
+      -->
+      <p>Por eso he decidido crear un <strong>espacio terapéutico online pensado para ti</strong>: una consulta cálida, respetuosa y segura, donde puedas ser tú misma, con tus emociones a flor de piel, tus dudas, tu historia única. Mi objetivo es que te sientas sostenida, comprendida y acompañada durante todo el proceso, ya sea que estés comenzando con los tratamientos, en medio del recorrido, atravesando un duelo, o disfrutando —con todo lo que eso implica— del embarazo tan deseado.</p>
       <p>Actualmente sigo formándome en reproducción asistida para ofrecerte un acompañamiento actualizado, sensible y humano.</p>
       <p><strong>Estás en tu momento. Y no tienes por qué vivirlo sola.</strong></p>
     </div>
@@ -329,6 +332,15 @@
     <br><br>
     <!-- Calendario profesional Google Calendar -->
     <iframe src="https://calendar.google.com/calendar/embed?src=1907f7eb038b8734efa6539d6a3a4354a64315e8969e48225c74e31834cc4898&ctz=Europe%2FMadrid" style="border: 1px solid #bdbdbd" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+    <br>
+    <!-- Formulario para crear evento dinámico en Google Calendar -->
+    <form id="calendarForm" style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;justify-content:center;">
+        <label for="fecha" style="font-weight:bold;">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required style="padding:0.3rem 0.5rem;border-radius:4px;border:1px solid #bdbdbd;">
+        <label for="hora" style="font-weight:bold;">Hora:</label>
+        <input type="time" id="hora" name="hora" required style="padding:0.3rem 0.5rem;border-radius:4px;border:1px solid #bdbdbd;">
+        <button type="submit" style="background:#4285F4;color:white;padding:0.8rem 1.5rem;border-radius:5px;font-weight:bold;text-decoration:none;font-size:1rem;border:none;cursor:pointer;">Añadir evento a Google Calendar</button>
+    </form>
     </section>
 
 <!-- Link al calendario real es: https://calendar.google.com/calendar/ical/1907f7eb038b8734efa6539d6a3a4354a64315e8969e48225c74e31834cc4898%40group.calendar.google.com/public/basic.ics -->
@@ -350,6 +362,10 @@
 </section>
 
 <footer>
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.link/jmpfcs" target="_blank" rel="noopener" id="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <img src="images/whatsapp.png" alt="WhatsApp" style="width:48px;height:48px;">
+</a>
     <p>Laura Martínez Ortega – Psicología con corazón y ciencia</p>
     <div class="legal-links">
         <a href="aviso-legal.html">Aviso legal</a> |
@@ -359,6 +375,68 @@
 </footer>
 
 <script>
+// Botón flotante de WhatsApp
+const whatsappFloat = document.createElement('style');
+whatsappFloat.innerHTML = `
+    #whatsapp-float {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 2000;
+        background: #25D366;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(90,75,60,0.15);
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: box-shadow 0.2s;
+    }
+    #whatsapp-float:hover {
+        box-shadow: 0 4px 16px rgba(90,75,60,0.25);
+        background: #128C7E;
+    }
+    #whatsapp-float img {
+        width: 36px;
+        height: 36px;
+        display: block;
+    }
+    @media (max-width: 600px) {
+        #whatsapp-float {
+            bottom: 16px;
+            right: 16px;
+            padding: 6px;
+        }
+        #whatsapp-float img {
+            width: 28px;
+            height: 28px;
+        }
+    }
+`;
+document.head.appendChild(whatsappFloat);
+
+// Formulario dinámico Google Calendar
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('calendarForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            if (!fecha || !hora) return;
+            // Duración fija: 50 minutos
+            const start = new Date(fecha + 'T' + hora);
+            const end = new Date(start.getTime() + 50*60000);
+            function toGCal(dt) {
+                return dt.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            }
+            const startStr = toGCal(start);
+            const endStr = toGCal(end);
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Reserva%20de%20sesión%20con%20Laura%20Martínez%20Ortega&details=Reserva%20tu%20sesión%20de%20psicología%20online%20por%20videollamada%20con%20Laura%20Martínez%20Ortega.&location=Online&dates=${startStr}/${endStr}&add=contacto@lauramartinezortegapsicologia.es`;
+            window.open(url, '_blank');
+        });
+    }
+});
 // Menú hamburguesa
 const hamburger = document.getElementById('hamburger');
 const nav = document.getElementById('mainNav');

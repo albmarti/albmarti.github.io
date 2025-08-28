@@ -4,7 +4,102 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="images/Logo.png" sizes="32x32">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Psicología Online con Empatía y Profesionalismo. Reserva tu sesión con Laura Martínez Ortega.">
+    
+    <!-- SEO Meta Tags -->
+    <title>Psicóloga Laura Martínez Ortega | Terapia Online | Psicología Perinatal</title>
+    <meta name="description" content="Psicóloga especializada en terapia online, psicología perinatal y procesos de reproducción asistida. Acompañamiento profesional y empático para tu bienestar emocional.">
+    <meta name="keywords" content="psicóloga online, terapia online, psicología perinatal, reproducción asistida, Laura Martínez Ortega, psicóloga Madrid, acompañamiento psicológico">
+    <meta name="author" content="Laura Martínez Ortega">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Laura Martínez Ortega - Psicóloga Especialista en Terapia Online">
+    <meta property="og:description" content="Acompañamiento psicológico online desde la empatía y el profesionalismo. Especializada en psicología perinatal y reproducción asistida.">
+    <meta property="og:image" content="https://albmarti.github.io/images/Logo.png">
+    <meta property="og:url" content="https://albmarti.github.io">
+    
+    <!-- Datos estructurados Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Laura Martínez Ortega - Psicología Online",
+        "image": "https://albmarti.github.io/images/Logo.png",
+        "description": "Servicio de psicología online especializado en terapia perinatal y reproducción asistida, ofreciendo acompañamiento profesional y empático.",
+        "url": "https://albmarti.github.io",
+        "telephone": "",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "ES",
+            "addressRegion": "Madrid"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "40.4167",
+            "longitude": "-3.7037"
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "20:00"
+        },
+        "sameAs": [
+            "https://facebook.com/tu_pagina",
+            "https://instagram.com/tu_perfil",
+            "https://linkedin.com/in/tu_perfil",
+            "https://twitter.com/tu_perfil"
+        ],
+        "founder": {
+            "@type": "Person",
+            "name": "Laura Martínez Ortega",
+            "jobTitle": "Psicóloga General Sanitaria",
+            "description": "Psicóloga especializada en psicología perinatal y reproducción asistida",
+            "knowsAbout": [
+                "Psicología Perinatal",
+                "Reproducción Asistida",
+                "Terapia Online",
+                "Neuropsicología Clínica"
+            ]
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Servicios de Psicología",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Terapia Psicológica con Adultos",
+                        "description": "Sesiones online de 50 minutos"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Psicología Perinatal",
+                        "description": "Acompañamiento durante el proceso de maternidad"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Proceso de Reproducción Asistida",
+                        "description": "Apoyo psicológico durante tratamientos de reproducción"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+
+    <!-- Metadatos de verificación -->
+    <meta name="google-site-verification" content="tu_código_de_verificación">
+    <meta name="msvalidate.01" content="tu_código_de_verificación">
+    
     <style>
         .contact-cards {
             display: flex;
@@ -72,6 +167,24 @@
             max-width: 100px;
             height: auto;
             margin-left: 1.5rem;
+        }
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.2rem;
+            justify-content: center;
+        }
+        .social-icon {
+            width: 28px;
+            height: 28px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .social-icon:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+        .social-icon:hover {
+            opacity: 0.8;
         }
         @media (max-width: 800px) {
             .header-flex {
@@ -255,15 +368,87 @@
             margin-bottom: 1rem;
           }
         }
+    /* Estilos del banner de cookies */
+    #cookieBanner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(232, 220, 209, 0.95);
+        padding: 1rem;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        display: none;
+    }
+    .cookie-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .cookie-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+    .cookie-btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.2s;
+    }
+    .cookie-accept {
+        background: #5a4b3c;
+        color: white;
+    }
+    .cookie-accept:hover {
+        background: #7a6650;
+    }
+    .cookie-reject {
+        background: #f3efeb;
+        color: #5a4b3c;
+    }
+    .cookie-reject:hover {
+        background: #e5e0d9;
+    }
+    .cookie-settings {
+        color: #5a4b3c;
+        text-decoration: underline;
+        margin-left: 1rem;
+    }
     </style>
 </head>
 <body>
+
+<!-- Banner de cookies -->
+<div id="cookieBanner">
+    <div class="cookie-content">
+        <p>Utilizamos cookies propias y de terceros para mejorar nuestros servicios. 
+           <a href="cookies.html" class="cookie-settings">Más información</a></p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Aceptar</button>
+            <button class="cookie-btn cookie-reject" onclick="rejectCookies()">Rechazar</button>
+        </div>
+    </div>
+</div>
 
 <header>
     <div class="header-flex">
         <div class="header-info">
             <h1 style="margin-bottom: 0.3rem;">Laura Martínez Ortega</h1>
             <p style="margin-top: 0; font-size: 1rem;">Psicología Online con Empatía y Profesionalismo</p>
+            <div class="social-icons">
+                <a href="https://instagram.com/lauramartinezortega.psicologa" target="_blank" rel="noopener">
+                    <img src="social-icons/instagram.svg" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://linkedin.com/in/tu_perfil" target="_blank" rel="noopener">
+                    <img src="social-icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+                </a>
+            </div>
         </div>
         <img src="images/Logo.svg" alt="Logo Laura Martínez Ortega" style="max-width:100px;height:auto;margin-left:1.5rem;">
         <div class="hamburger" id="hamburger" aria-label="Abrir menú" tabindex="0" role="button">
@@ -367,6 +552,8 @@
     <img src="images/whatsapp.png" alt="WhatsApp" style="width:48px;height:48px;">
 </a>
     <p>Laura Martínez Ortega – Psicología con corazón y ciencia</p>
+    <p style="font-size: 0.9rem;">Psicóloga General Sanitaria - Col. COPCV XXXX<br>
+    NIF: XXXXXXXXX</p>
     <div class="legal-links">
         <a href="aviso-legal.html">Aviso legal</a> |
         <a href="privacidad.html">Política de privacidad</a> |
@@ -380,9 +567,9 @@ const whatsappFloat = document.createElement('style');
 whatsappFloat.innerHTML = `
     #whatsapp-float {
         position: fixed;
-        bottom: 24px;
+        bottom: 80px;
         right: 24px;
-        z-index: 2000;
+        z-index: 1500;
         background: #25D366;
         border-radius: 50%;
         box-shadow: 0 2px 8px rgba(90,75,60,0.15);
@@ -462,6 +649,45 @@ nav.querySelectorAll('a').forEach(link => {
         }
     });
 });
+
+// Gestión de cookies
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function acceptCookies() {
+    setCookie('cookiesAccepted', 'true', 365);
+    document.getElementById('cookieBanner').style.display = 'none';
+}
+
+function rejectCookies() {
+    setCookie('cookiesAccepted', 'false', 365);
+    document.getElementById('cookieBanner').style.display = 'none';
+}
+
+// Mostrar el banner si no hay decisión previa
+window.onload = function() {
+    if (getCookie('cookiesAccepted') === null) {
+        document.getElementById('cookieBanner').style.display = 'block';
+    }
+};
 </script>
 
 </body>

@@ -874,8 +874,8 @@
         <div class="reviews-track">
             <!-- Las reseñas se cargarán aquí dinámicamente -->
         </div>
-        <button class="carousel-button prev" onclick="moveCarousel(-1)" id="prevButton">←</button>
-        <button class="carousel-button next" onclick="moveCarousel(1)" id="nextButton">→</button>
+        <button class="carousel-button prev" onclick="moveCarousel(1)" id="prevButton">←</button>
+        <button class="carousel-button next" onclick="moveCarousel(-1)" id="nextButton">→</button>
     </div>
 
     <button class="add-review-btn" onclick="showReviewForm()">Añadir una opinión</button>
@@ -1209,7 +1209,7 @@ function moveCarousel(direction) {
     if (!track) return;
 
     const maxPosition = (carouselState.totalReviews - 2) * carouselState.cardWidth * -1;
-    carouselState.position += direction * carouselState.cardWidth;
+    carouselState.position -= direction * carouselState.cardWidth; // Cambiado el signo aquí
     
     if (carouselState.position > 0) carouselState.position = 0;
     if (carouselState.position < maxPosition) carouselState.position = maxPosition;

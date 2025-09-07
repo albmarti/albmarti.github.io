@@ -465,13 +465,78 @@
         margin-top: 0.5rem;
     }
 
-    .reviews-container {
-        display: grid;
-        gap: 1.5rem;
-        margin-top: 2rem;
-    }
+.reviews-container {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
 
-    .review-card {
+/* Carousel styles */
+.reviews-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    margin: 2rem -1rem;
+    padding: 0 1rem;
+}
+
+.reviews-carousel .review-card {
+    flex: 0 0 300px;
+    margin-right: 1rem;
+    scroll-snap-align: start;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.carousel-button {
+    background: #5a4b3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.carousel-button:hover {
+    background: #7a6650;
+}
+
+.carousel-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.view-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.view-toggle button {
+    background: none;
+    border: none;
+    color: #5a4b3c;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-weight: bold;
+}
+
+.view-toggle button.active {
+    text-decoration: underline;
+}    .review-card {
         background: #f3efeb;
         border-radius: 10px;
         box-shadow: 0 2px 8px rgba(90,75,60,0.07);
@@ -535,12 +600,13 @@
     }
 
     .modal-content {
-        background: white;
+        background: #f3efeb;
         border-radius: 10px;
         max-width: 500px;
         margin: 2rem auto;
         padding: 2rem;
         position: relative;
+        box-shadow: 0 2px 8px rgba(90,75,60,0.15);
     }
 
     .close-modal {
@@ -548,16 +614,57 @@
         right: 1rem;
         top: 1rem;
         font-size: 1.5rem;
-        color: #666;
+        color: #5a4b3c;
         cursor: pointer;
         border: none;
         background: none;
+        transition: color 0.2s;
+    }
+    
+    .close-modal:hover {
+        color: #7a6650;
     }
 
     .review-form {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.2rem;
+    }
+
+    .review-form input[type="text"],
+    .review-form textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #e8dcd1;
+        border-radius: 5px;
+        background: white;
+        transition: border-color 0.2s;
+    }
+
+    .review-form input[type="text"]:focus,
+    .review-form textarea:focus {
+        outline: none;
+        border-color: #5a4b3c;
+    }
+
+    .review-form textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .review-form button[type="submit"] {
+        background: #5a4b3c;
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .review-form button[type="submit"]:hover {
+        background: #7a6650;
     }
 
     .rating-input {
@@ -673,7 +780,7 @@
     <h2>Reserva tu sesión</h2>
     <p>Elige el día y la hora que mejor te venga. Recibe el enlace de videollamada directamente en tu correo.</p>
     <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background-color:#25D366;color:white;padding:1rem 2rem;text-decoration:none;border-radius:5px;font-size:1.1rem;font-weight:bold;transition:background 0.2s;box-shadow:0 2px 8px rgba(90,75,60,0.07);">
-        <img src="../images/whatsapp.png" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;"> Reservar sesión por WhatsApp
+        <img src="../images/whatsapp.png" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;" loading="lazy"> Reservar sesión por WhatsApp
     </a>
     <br><br>
     <!-- Calendario profesional Google Calendar -->
@@ -699,8 +806,21 @@
         </div>
     </div>
     
+    <div class="view-toggle">
+        <button onclick="toggleView('grid')" class="active">Ver en grid</button>
+        <button onclick="toggleView('carousel')">Ver en carousel</button>
+    </div>
+
     <div class="reviews-container">
-        <!-- Las reseñas se cargarán aquí dinámicamente -->
+        <!-- Las reseñas se cargarán aquí dinámicamente en modo grid -->
+    </div>
+
+    <div class="reviews-carousel" style="display: none;">
+        <!-- Las reseñas se cargarán aquí dinámicamente en modo carousel -->
+        <div class="carousel-controls">
+            <button class="carousel-button" onclick="moveCarousel(-1)" id="prevButton">←</button>
+            <button class="carousel-button" onclick="moveCarousel(1)" id="nextButton">→</button>
+        </div>
     </div>
 
     <button class="add-review-btn" onclick="showReviewForm()">Añadir una opinión</button>
@@ -755,53 +875,7 @@
     </div>
 </section>
 
-<section id="reviews">
-    <h2>Opiniones de pacientes</h2>
-    <div class="reviews-summary">
-        <div class="average-rating">
-            <h3>Valoración media</h3>
-            <div class="stars-display">
-                <span id="averageRating">0.0</span>/5
-                <div id="averageStars" class="stars"></div>
-            </div>
-            <span id="totalReviews">0 opiniones</span>
-        </div>
-    </div>
 
-    <div class="add-review">
-        <h3>Comparte tu experiencia</h3>
-        <form id="reviewForm">
-            <div class="rating-input">
-                <label>Tu valoración:</label>
-                <div class="star-rating">
-                    <input type="radio" id="star5" name="rating" value="5" required>
-                    <label for="star5" title="5 estrellas"></label>
-                    <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4" title="4 estrellas"></label>
-                    <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3" title="3 estrellas"></label>
-                    <input type="radio" id="star2" name="rating" value="2">
-                    <label for="star2" title="2 estrellas"></label>
-                    <input type="radio" id="star1" name="rating" value="1">
-                    <label for="star1" title="1 estrella"></label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="reviewName">Nombre:</label>
-                <input type="text" id="reviewName" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="reviewText">Tu opinión:</label>
-                <textarea id="reviewText" name="text" required></textarea>
-            </div>
-            <button type="submit" class="submit-review">Enviar opinión</button>
-        </form>
-    </div>
-
-    <div id="reviewsList" class="reviews-list">
-        <!-- Las reseñas se cargarán aquí dinámicamente -->
-    </div>
-</section>
 
 <footer>
 <!-- Botón flotante de WhatsApp -->
@@ -965,8 +1039,7 @@ async function loadReviews() {
 }
 
 function updateReviewsDisplay(reviews) {
-    const container = document.querySelector('.reviews-container');
-    container.innerHTML = reviews.map(review => `
+    const reviewHTML = reviews.map(review => `
         <div class="review-card">
             <div class="review-header">
                 <span class="review-author">${review.name}</span>
@@ -976,6 +1049,64 @@ function updateReviewsDisplay(reviews) {
             <div class="review-date">${new Date(review.timestamp).toLocaleDateString()}</div>
         </div>
     `).join('');
+
+    const container = document.querySelector('.reviews-container');
+    const carousel = document.querySelector('.reviews-carousel');
+    
+    container.innerHTML = reviewHTML;
+    carousel.innerHTML = reviewHTML + `
+        <div class="carousel-controls">
+            <button class="carousel-button" onclick="moveCarousel(-1)" id="prevButton">←</button>
+            <button class="carousel-button" onclick="moveCarousel(1)" id="nextButton">→</button>
+        </div>
+    `;
+
+    updateCarouselButtons();
+}
+
+function toggleView(view) {
+    const container = document.querySelector('.reviews-container');
+    const carousel = document.querySelector('.reviews-carousel');
+    const [gridBtn, carouselBtn] = document.querySelectorAll('.view-toggle button');
+
+    if (view === 'grid') {
+        container.style.display = 'grid';
+        carousel.style.display = 'none';
+        gridBtn.classList.add('active');
+        carouselBtn.classList.remove('active');
+    } else {
+        container.style.display = 'none';
+        carousel.style.display = 'flex';
+        gridBtn.classList.remove('active');
+        carouselBtn.classList.add('active');
+        updateCarouselButtons();
+    }
+}
+
+function moveCarousel(direction) {
+    const carousel = document.querySelector('.reviews-carousel');
+    const scrollAmount = 300; // Ancho de una tarjeta
+    carousel.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+    
+    // Actualizar estado de los botones después del scroll
+    setTimeout(updateCarouselButtons, 300);
+}
+
+function updateCarouselButtons() {
+    const carousel = document.querySelector('.reviews-carousel');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+
+    if (!carousel || !prevButton || !nextButton) return;
+
+    const scrollPos = carousel.scrollLeft;
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+    prevButton.disabled = scrollPos <= 0;
+    nextButton.disabled = scrollPos >= maxScroll;
 }
 
 function updateAverageRating(reviews) {

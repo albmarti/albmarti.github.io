@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="images/Logo.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../images/Logo.png" sizes="32x32">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
@@ -15,8 +15,8 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Laura Martínez Ortega - Psicóloga Especialista en Terapia Online">
     <meta property="og:description" content="Acompañamiento psicológico online desde la empatía y el profesionalismo. Especializada en psicología perinatal y reproducción asistida.">
-    <meta property="og:image" content="https://albmarti.github.io/images/Logo.png">
-    <meta property="og:url" content="https://albmarti.github.io">
+    <meta property="og:image" content="https://lauramartinezortegapsicologia.es/images/Logo.png">
+    <meta property="og:url" content="https://lauramartinezortegapsicologia.es">
     
     <!-- Datos estructurados Schema.org -->
     <script type="application/ld+json">
@@ -55,7 +55,43 @@
             "@type": "Person",
             "name": "Laura Martínez Ortega",
             "jobTitle": "Psicóloga General Sanitaria",
-            "description": "Psicóloga especializada en psicología perinatal y reproducción asistida"
+            "description": "Psicóloga especializada en psicología perinatal y reproducción asistida",
+            "knowsAbout": [
+                "Psicología Perinatal",
+                "Reproducción Asistida",
+                "Terapia Online",
+                "Neuropsicología Clínica"
+            ]
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Servicios de Psicología",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Terapia Psicológica con Adultos",
+                        "description": "Sesiones online de 50 minutos"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Psicología Perinatal",
+                        "description": "Acompañamiento durante el proceso de maternidad"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Proceso de Reproducción Asistida",
+                        "description": "Apoyo psicológico durante tratamientos de reproducción"
+                    }
+                }
+            ]
         }
     }
     </script>
@@ -65,7 +101,6 @@
     <meta name="msvalidate.01" content="tu_código_de_verificación">
     
     <style>
-        /* Estilos existentes */
         .contact-cards {
             display: flex;
             gap: 2rem;
@@ -106,270 +141,560 @@
             background-color: #ffffff;
             color: #333;
         }
-        
-        /* Estilos para la sección de reseñas */
-        .reviews-section {
+        header {
+            background-color: #ffffff;
+            padding: 2rem 0 2rem 0;
+        }
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            gap: 2rem;
+        }
+        .header-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        header img {
+            max-width: 100px;
+            height: auto;
+            margin-left: 1.5rem;
+        }
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.2rem;
+            justify-content: center;
+        }
+        .social-icon {
+            width: 28px;
+            height: 28px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .social-icon:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+        .social-icon:hover {
+            opacity: 0.8;
+        }
+        @media (max-width: 800px) {
+            .header-flex {
+                flex-direction: column;
+                align-items: center !important;
+                gap: 1rem;
+            }
+            header img {
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+            }
+            .header-info {
+                align-items: center;
+            }
+            header h1, header p {
+                text-align: center;
+                align-items: center;
+            }
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            top: 2.2rem;
+            right: 2rem;
+            z-index: 1001;
+        }
+        .hamburger span {
+            height: 4px;
+            width: 30px;
+            background: #5a4b3c;
+            margin: 5px 0;
+            border-radius: 2px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        header img {
+            max-width: 100px;
+            height: auto;
+            margin-left: 1.5rem;
+        }
+        }
+        nav {
+            background-color: #e8dcd1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+            padding-left: 0;
+        }
+        nav a {
+            padding: 1rem 1.5rem 1rem 0;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a:focus {
+            color: #5a4b3c;
+        }
+        nav.open {
+            display: flex;
+        }
+        section {
             padding: 2rem;
             max-width: 900px;
             margin: auto;
         }
-
-        .reviews-summary {
-            background: #f3efeb;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(90,75,60,0.07);
-            padding: 1.5rem 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
+        section h2 {
+            color: #5a4b3c;
         }
-
-        .average-rating {
+        .cta {
+            background-color: #e8dcd1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-        }
-
-        .rating-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #5a4b3c;
-        }
-
-        .stars-display {
-            color: #e8dcd1;
-            font-size: 1.8rem;
-            letter-spacing: 0.2rem;
-        }
-
-        .stars-display .filled {
-            color: #5a4b3c;
-        }
-
-        .total-reviews {
-            color: #666;
-            margin-top: 0.5rem;
-        }
-
-        .reviews-container {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .review-card {
-            background: #f3efeb;
-            border-radius: 10px;
+            justify-content: center;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            border-radius: 12px;
             box-shadow: 0 2px 8px rgba(90,75,60,0.07);
-            padding: 1.5rem;
         }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .cta h2 {
             margin-bottom: 1rem;
         }
-
-        .review-author {
-            font-weight: bold;
-            color: #5a4b3c;
+        .cta p {
+            margin-bottom: 1.5rem;
         }
-
-        .review-rating {
-            color: #5a4b3c;
-            letter-spacing: 0.1rem;
+            .cta {
+                max-width: 95vw;
+                padding: 2rem 0.5rem;
+            }
+        .cta a {
+            background-color: #5a4b3c;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background 0.2s;
         }
-
-        .review-content {
-            color: #333;
-            margin-bottom: 1rem;
-            line-height: 1.5;
+        .cta a:hover, .cta a:focus {
+            background-color: #7a6650;
         }
-
-        .review-date {
-            color: #666;
+        footer {
+            background-color: #f3efeb;
+            text-align: center;
+            padding: 1rem;
             font-size: 0.9rem;
         }
-
-        .add-review-btn {
-            display: block;
-            margin: 2rem auto;
-            padding: 0.8rem 2rem;
-            background: #5a4b3c;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
+        .legal-links {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
         }
-
-        .add-review-btn:hover {
-            background: #7a6650;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 10px;
-            max-width: 500px;
-            margin: 2rem auto;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .close-modal {
-            position: absolute;
-            right: 1.5rem;
-            top: 1.5rem;
-            font-size: 2rem;
+        .legal-links a {
             color: #5a4b3c;
-            cursor: pointer;
-            border: none;
-            background: none;
-            transition: color 0.2s;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+            text-decoration: underline;
+            margin: 0 0.5rem;
         }
-
-        .close-modal:hover {
-            color: #7a6650;
-            background: #f3efeb;
+        @media (max-width: 800px) {
+            .hamburger {
+                display: flex;
+            }
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #e8dcd1;
+                z-index: 1000;
+                padding-left: 0;
+            }
+            nav.open {
+                display: flex;
+            }
+            nav a {
+                width: 100%;
+                padding: 1rem 2rem;
+                border-bottom: 1px solid #c2b6a6;
+            }
         }
-
-        .review-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .rating-input {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .stars-input {
-            display: flex;
-            flex-direction: row-reverse;
-            gap: 0.5rem;
-            justify-content: center;
-        }
-
-        .stars-input input[type="radio"] {
-            display: none;
-        }
-
-        .stars-input label {
-            cursor: pointer;
-            font-size: 2.2rem;
-            color: #e8dcd1;
-            transition: color 0.2s;
-        }
-
-        .stars-input label:hover,
-        .stars-input label:hover ~ label,
-        .stars-input input[type="radio"]:checked ~ label {
-            color: #5a4b3c;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .form-group label {
-            color: #5a4b3c;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            padding: 1rem;
-            border: 1px solid #e8dcd1;
-            border-radius: 10px;
-            font-size: 1rem;
-            background: #f3efeb;
-            color: #5a4b3c;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #5a4b3c;
-            box-shadow: 0 2px 8px rgba(90,75,60,0.07);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #999;
-        }
-
-        .submit-review {
-            display: block;
-            margin: 1rem auto 0;
-            padding: 0.8rem 2rem;
-            background: #5a4b3c;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            font-size: 1.1rem;
-        }
-
-        .submit-review:hover {
-            background: #7a6650;
-        }
-
-        /* Media queries */
         @media (max-width: 600px) {
-            .modal-content {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-
-            .stars-input label {
-                font-size: 1.8rem;
+            header h1 {
+                font-size: 1.5rem;
             }
         }
+        /* Sobre mí flex layout */
+        .sobre-mi-flex {
+          display: flex;
+          align-items: flex-start;
+          gap: 2.5rem;
+          justify-content: space-between;
+          flex-wrap: wrap;
+        }
+        .sobre-mi-texto {
+          flex: 1 1 320px;
+          min-width: 260px;
+        }
+        .sobre-mi-img {
+          flex: 0 0 260px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+        }
+        @media (max-width: 900px) {
+          .sobre-mi-flex {
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+          }
+          .sobre-mi-img {
+            margin-left: 0;
+            margin-bottom: 1rem;
+          }
+        }
+    /* Estilos del banner de cookies */
+    #cookieBanner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(232, 220, 209, 0.95);
+        padding: 1rem;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        display: none;
+    }
+    .cookie-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .cookie-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+    .cookie-btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.2s;
+    }
+    .cookie-accept {
+        background: #5a4b3c;
+        color: white;
+    }
+    .cookie-accept:hover {
+        background: #7a6650;
+    }
+    .cookie-reject {
+        background: #f3efeb;
+        color: #5a4b3c;
+    }
+    .cookie-reject:hover {
+        background: #e5e0d9;
+    }
+    .cookie-settings {
+        color: #5a4b3c;
+        text-decoration: underline;
+        margin-left: 1rem;
+    }
+
+    /* Estilos para la sección de reseñas */
+    .reviews-section {
+        padding: 2rem;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .reviews-summary {
+        background: #f3efeb;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(90,75,60,0.07);
+        padding: 1.5rem 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .average-rating {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .rating-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #5a4b3c;
+    }
+
+    .stars-display {
+        color: #e8dcd1;
+        font-size: 1.8rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .stars-display .filled {
+        color: #5a4b3c;
+    }
+
+    .total-reviews {
+        color: #666;
+        margin-top: 0.5rem;
+    }
+
+    .reviews-container {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .review-card {
+        background: #f3efeb;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(90,75,60,0.07);
+        padding: 1.5rem;
+    }
+
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .review-author {
+        font-weight: bold;
+        color: #5a4b3c;
+    }
+
+    .review-rating {
+        color: #5a4b3c;
+        letter-spacing: 0.1rem;
+    }
+
+    .review-content {
+        color: #333;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    .review-date {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .add-review-btn {
+        display: block;
+        margin: 2rem auto;
+        padding: 0.8rem 2rem;
+        background: #5a4b3c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .add-review-btn:hover {
+        background: #7a6650;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+    }
+
+    .modal-content {
+        background: white;
+        border-radius: 10px;
+        max-width: 500px;
+        margin: 2rem auto;
+        padding: 2rem;
+        position: relative;
+    }
+
+    .close-modal {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-size: 1.5rem;
+        color: #666;
+        cursor: pointer;
+        border: none;
+        background: none;
+    }
+
+    .review-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .rating-input {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 1.5rem;
+        color: #e8dcd1;
+        margin: 1rem 0;
+    }
+
+    .rating-input label {
+        cursor: pointer;
+    }
+
+    .rating-input input[type="radio"] {
+        display: none;
+    }
+
+    .rating-input label:hover,
+    .rating-input label:hover ~ label,
+    .rating-input input[type="radio"]:checked ~ label {
+        color: #5a4b3c;
+    }
     </style>
 </head>
 <body>
 
-<!-- Resto del contenido HTML existente -->
+<!-- Banner de cookies -->
+<div id="cookieBanner">
+    <div class="cookie-content">
+        <p>Utilizamos cookies propias y de terceros para mejorar nuestros servicios. 
+           <a href="cookies.html" class="cookie-settings">Más información</a></p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Aceptar</button>
+            <button class="cookie-btn cookie-reject" onclick="rejectCookies()">Rechazar</button>
+        </div>
+    </div>
+</div>
+
+<header>
+    <div class="header-flex">
+        <div class="header-info">
+            <h1 style="margin-bottom: 0.3rem;">Laura Martínez Ortega</h1>
+            <p style="margin-top: 0; font-size: 1rem;">Psicología Online con Empatía y Profesionalismo</p>
+            <div class="social-icons">
+                <a href="https://instagram.com/lauramartinezortega.psicologa" target="_blank" rel="noopener">
+                    <img src="../social-icons/instagram.svg" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://linkedin.com/in/tu_perfil" target="_blank" rel="noopener">
+                    <img src="../social-icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+                </a>
+            </div>
+        </div>
+        <img src="../images/Logo.svg" alt="Logo Laura Martínez Ortega" style="max-width:100px;height:auto;margin-left:1.5rem;">
+        <div class="hamburger" id="hamburger" aria-label="Abrir menú" tabindex="0" role="button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<nav id="mainNav" aria-label="Navegación principal">
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#reserva">Reserva</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<section id="inicio">
+    <h2>¡Te doy la bienvenida!</h2>
+    <p>Este es un espacio seguro para tu bienestar emocional, ayudo a personas que estén en búsqueda o transitandola maternidad.</p>
+    <p>Acompañamiento psicológico online desde la empatía, la ciencia y el corazón, para todas las personas</p>
+</section>
+
+<section id="sobre-mi">
+  <div class="sobre-mi-flex">
+    <div class="sobre-mi-texto">
+      <h2>Sobre mí</h2>
+      <p>Soy Laura, soy <strong>Psicóloga General Sanitaria</strong>, colegiada en el Colegio Oficial de Psicología de la Comunidad Valenciana, con formación en <strong>Psicología Perinatal</strong> y <strong>Neuropsicología Clínica</strong>.</p>
+      <p>Durante años he trabajado como neuropsicóloga clínica, acompañando a personas con daño cerebral adquirido, patología dual y trastornos del neurodesarrollo. Cada uno de esos procesos me ha enseñado algo valioso sobre la <strong>resiliencia</strong>, la <strong>vulnerabilidad</strong> y la <strong>fuerza del ser humano</strong>.</p>
+      <p>Mi propia maternidad marcó un antes y un después. Fue una experiencia profundamente transformadora que me llevó a reenfocar mi vocación. Viví en carne propia lo intensas que pueden ser las emociones en esta etapa vital, los desafíos, las dudas, los miedos... pero también el amor, la conexión y la necesidad de sentirse acompañada. Fue ahí donde nació mi deseo de acompañar a otras personas que, como yo, están transitando el camino de la maternidad.</p>
+      <p>Desde entonces, decidí enfocar mi labor en acompañar a otras mujeres, familias y personas que están transitando esta etapa vital. Porque creo firmemente que no tenemos que vivir la maternidad ni la crianza en soledad. Merecemos espacios de escucha, de comprensión y de sostén.</p>
+      <!--
+      <p>Hoy estoy especializada en <strong>psicología perinatal</strong>, y tengo especial sensibilidad hacia quienes están viviendo un proceso de <strong>reproducción asistida</strong>. Sé que no es un camino fácil: está lleno de esperanza, pero también de incertidumbre, silencios, miedos, pruebas y decisiones difíciles. Muchas veces se vive en soledad, sin un espacio donde poder hablar sin juicios ni tabúes.</p>
+      -->
+      <p>Por eso he decidido crear un <strong>espacio terapéutico online pensado para ti</strong>: una consulta cálida, respetuosa y segura, donde puedas ser tú misma, con tus emociones a flor de piel, tus dudas, tu historia única. Mi objetivo es que te sientas sostenida, comprendida y acompañada durante todo el proceso, ya sea que estés comenzando con los tratamientos, en medio del recorrido, atravesando un duelo, o disfrutando —con todo lo que eso implica— del embarazo tan deseado.</p>
+      <p>Actualmente sigo formándome en reproducción asistida para ofrecerte un acompañamiento actualizado, sensible y humano.</p>
+      <p><strong>Estás en tu momento. Y no tienes por qué vivirlo sola.</strong></p>
+    </div>
+    <div class="sobre-mi-img">
+      <div style="width:260px;height:260px;display:flex;align-items:center;justify-content:center;border:2px dashed #bdbdbd;border-radius:12px;background:#faf9f7;color:#bdbdbd;font-size:1.1rem;margin-left:2rem;text-align:center;">
+        <span>Próximamente<br>foto profesional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+    <h2>Servicios</h2>
+    <ul>
+        <li>Terapia Psicológica con Adultos</li>
+        <li>Psicología perinatal</li>
+        <li>Proceso de reproducción asistida</li>
+    </ul>
+    <p><strong>Modalidad:</strong> Online por videollamada<br>
+    <strong>Duración:</strong> 50 minutos<br>
+    <strong>Frecuencia:</strong> Semanal o quincenal</p>
+</section>
+
+<section id="reserva" class="cta">
+    <h2>Reserva tu sesión</h2>
+    <p>Elige el día y la hora que mejor te venga. Recibe el enlace de videollamada directamente en tu correo.</p>
+    <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background-color:#25D366;color:white;padding:1rem 2rem;text-decoration:none;border-radius:5px;font-size:1.1rem;font-weight:bold;transition:background 0.2s;box-shadow:0 2px 8px rgba(90,75,60,0.07);">
+        <img src="../images/whatsapp.png" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;"> Reservar sesión por WhatsApp
+    </a>
+    <br><br>
+    <!-- Calendario profesional Google Calendar -->
+    <iframe src="https://calendar.google.com/calendar/embed?src=1907f7eb038b8734efa6539d6a3a4354a64315e8969e48225c74e31834cc4898&ctz=Europe%2FMadrid" style="border: 1px solid #bdbdbd" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+    <br>
+    <!-- Formulario para crear evento dinámico en Google Calendar -->
+    <form id="calendarForm" style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;justify-content:center;">
+        <label for="fecha" style="font-weight:bold;">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required style="padding:0.3rem 0.5rem;border-radius:4px;border:1px solid #bdbdbd;">
+        <label for="hora" style="font-weight:bold;">Hora:</label>
+        <input type="time" id="hora" name="hora" required style="padding:0.3rem 0.5rem;border-radius:4px;border:1px solid #bdbdbd;">
+        <button type="submit" style="background:#4285F4;color:white;padding:0.8rem 1.5rem;border-radius:5px;font-weight:bold;text-decoration:none;font-size:1rem;border:none;cursor:pointer;">Añadir evento a Google Calendar</button>
+    </form>
+    </section>
 
 <section id="reviews" class="reviews-section">
     <h2>Opiniones de Pacientes</h2>
     <div class="reviews-summary">
         <div class="average-rating">
             <div class="rating-number">0.0</div>
-            <div class="stars-display"></div>
+            <div class="stars-display">★★★★★</div>
             <div class="total-reviews">0 opiniones</div>
         </div>
     </div>
@@ -382,16 +707,11 @@
 
     <div id="reviewFormModal" class="modal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeReviewForm()">&times;</button>
+            <span class="close" onclick="closeReviewForm()">&times;</span>
             <h3>Comparte tu experiencia</h3>
-            <form id="reviewForm" class="review-form" onsubmit="submitReview(event)">
-                <div class="form-group">
-                    <label for="name">Nombre:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
+            <form id="reviewForm" onsubmit="submitReview(event)">
                 <div class="rating-input">
-                    <label>Tu valoración:</label>
+                    <span>Tu valoración:</span>
                     <div class="stars-input">
                         <input type="radio" id="star5" name="rating" value="5" required>
                         <label for="star5">★</label>
@@ -405,21 +725,228 @@
                         <label for="star1">★</label>
                     </div>
                 </div>
-                
                 <div class="form-group">
-                    <label for="review">Tu opinión:</label>
-                    <textarea id="review" name="review" required
-                             placeholder="Comparte tu experiencia (mínimo 20 caracteres)"
-                             minlength="20"></textarea>
+                    <input type="text" id="reviewName" name="name" placeholder="Tu nombre" required>
                 </div>
-                
+                <div class="form-group">
+                    <textarea id="reviewText" name="review" placeholder="Comparte tu experiencia (mínimo 20 caracteres)" required minlength="20"></textarea>
+                </div>
                 <button type="submit" class="submit-review">Enviar opinión</button>
             </form>
         </div>
     </div>
 </section>
 
+<!-- Link al calendario real es: https://calendar.google.com/calendar/ical/1907f7eb038b8734efa6539d6a3a4354a64315e8969e48225c74e31834cc4898%40group.calendar.google.com/public/basic.ics -->
+<section id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Tienes dudas o quieres saber más antes de reservar?</p>
+    <div class="contact-cards">
+        <div class="contact-card">
+            <h3>Correo electrónico</h3>
+            <img src="../images/email.png" alt="Email" style="width:32px;height:32px;margin-bottom:0.5rem;">
+            <a href="mailto:contacto@lauramartinezortegapsicologia.es">Email</a>
+        </div>
+        <div class="contact-card">
+            <h3>WhatsApp</h3>
+            <img src="images/whatsapp.png" alt="WhatsApp" style="width:32px;height:32px;margin-bottom:0.5rem;">
+            <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<section id="reviews">
+    <h2>Opiniones de pacientes</h2>
+    <div class="reviews-summary">
+        <div class="average-rating">
+            <h3>Valoración media</h3>
+            <div class="stars-display">
+                <span id="averageRating">0.0</span>/5
+                <div id="averageStars" class="stars"></div>
+            </div>
+            <span id="totalReviews">0 opiniones</span>
+        </div>
+    </div>
+
+    <div class="add-review">
+        <h3>Comparte tu experiencia</h3>
+        <form id="reviewForm">
+            <div class="rating-input">
+                <label>Tu valoración:</label>
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5" required>
+                    <label for="star5" title="5 estrellas"></label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" title="4 estrellas"></label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" title="3 estrellas"></label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2" title="2 estrellas"></label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" title="1 estrella"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="reviewName">Nombre:</label>
+                <input type="text" id="reviewName" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="reviewText">Tu opinión:</label>
+                <textarea id="reviewText" name="text" required></textarea>
+            </div>
+            <button type="submit" class="submit-review">Enviar opinión</button>
+        </form>
+    </div>
+
+    <div id="reviewsList" class="reviews-list">
+        <!-- Las reseñas se cargarán aquí dinámicamente -->
+    </div>
+</section>
+
+<footer>
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.link/jmpfcs" target="_blank" rel="noopener" id="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <img src="images/whatsapp.png" alt="WhatsApp" style="width:48px;height:48px;">
+</a>
+    <p>Laura Martínez Ortega – Psicología con corazón y ciencia</p>
+    <p style="font-size: 0.9rem;">Psicóloga General Sanitaria - Col. COPCV XXXX<br>
+    NIF: XXXXXXXXX</p>
+    <div class="legal-links">
+        <a href="../aviso-legal.html">Aviso legal</a> |
+        <a href="../privacidad.html">Política de privacidad</a> |
+        <a href="../cookies.html">Cookies</a>
+    </div>
+</footer>
+
 <script>
+// Botón flotante de WhatsApp
+const whatsappFloat = document.createElement('style');
+whatsappFloat.innerHTML = `
+    #whatsapp-float {
+        position: fixed;
+        bottom: 80px;
+        right: 24px;
+        z-index: 1500;
+        background: #25D366;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(90,75,60,0.15);
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: box-shadow 0.2s;
+    }
+    #whatsapp-float:hover {
+        box-shadow: 0 4px 16px rgba(90,75,60,0.25);
+        background: #128C7E;
+    }
+    #whatsapp-float img {
+        width: 36px;
+        height: 36px;
+        display: block;
+    }
+    @media (max-width: 600px) {
+        #whatsapp-float {
+            bottom: 16px;
+            right: 16px;
+            padding: 6px;
+        }
+        #whatsapp-float img {
+            width: 28px;
+            height: 28px;
+        }
+    }
+`;
+document.head.appendChild(whatsappFloat);
+
+// Formulario dinámico Google Calendar
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('calendarForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            if (!fecha || !hora) return;
+            // Duración fija: 50 minutos
+            const start = new Date(fecha + 'T' + hora);
+            const end = new Date(start.getTime() + 50*60000);
+            function toGCal(dt) {
+                return dt.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            }
+            const startStr = toGCal(start);
+            const endStr = toGCal(end);
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Reserva%20de%20sesión%20con%20Laura%20Martínez%20Ortega&details=Reserva%20tu%20sesión%20de%20psicología%20online%20por%20videollamada%20con%20Laura%20Martínez%20Ortega.&location=Online&dates=${startStr}/${endStr}&add=contacto@lauramartinezortegapsicologia.es`;
+            window.open(url, '_blank');
+        });
+    }
+});
+// Menú hamburguesa
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('mainNav');
+
+function toggleMenu() {
+    nav.classList.toggle('open');
+    hamburger.classList.toggle('active');
+}
+
+hamburger.addEventListener('click', toggleMenu);
+hamburger.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+        toggleMenu();
+    }
+});
+
+// Cierra el menú al hacer clic en un enlace (en móvil)
+nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 800) {
+            nav.classList.remove('open');
+            hamburger.classList.remove('active');
+        }
+    });
+});
+
+// Gestión de cookies
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function acceptCookies() {
+    setCookie('cookiesAccepted', 'true', 365);
+    document.getElementById('cookieBanner').style.display = 'none';
+}
+
+function rejectCookies() {
+    setCookie('cookiesAccepted', 'false', 365);
+    document.getElementById('cookieBanner').style.display = 'none';
+}
+
+// Mostrar el banner si no hay decisión previa
+window.onload = function() {
+    if (getCookie('cookiesAccepted') === null) {
+        document.getElementById('cookieBanner').style.display = 'block';
+    }
+    loadReviews(); // Cargar reseñas al iniciar la página
+};
+
 // Sistema de reseñas
 const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxa1LDH2R7FopqB5zLJc9SJ8dBlDUCA20MA1cKLgg_WNQORJKOtAHJ3SbeEzhIFoDQz/exec';
 
@@ -506,7 +1033,6 @@ async function submitReview(event) {
         if (result.success) {
             closeReviewForm();
             loadReviews();
-            alert('¡Gracias por compartir tu opinión!');
         } else {
             alert('Error al enviar la reseña. Por favor, inténtalo de nuevo.');
         }
@@ -523,9 +1049,6 @@ window.onclick = function(event) {
         closeReviewForm();
     }
 }
-
-// Cargar reseñas al iniciar la página
-document.addEventListener('DOMContentLoaded', loadReviews);
 </script>
 
 </body>

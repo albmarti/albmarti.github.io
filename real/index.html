@@ -497,7 +497,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s, opacity 0.3s;
+    transition: all 0.3s ease;
     font-size: 1.2rem;
     box-shadow: 0 2px 8px rgba(90,75,60,0.07);
 }
@@ -1106,17 +1106,20 @@ function updateReviewsDisplay(reviews) {
         <div class="review-card">
             <div class="review-header">
                 <span class="review-author">${review.name}</span>
-                <span class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}</span>
+                <div class="review-rating">${'★'.repeat(parseInt(review.rating))}${('☆').repeat(5-parseInt(review.rating))}</div>
             </div>
             <div class="review-content">${review.review}</div>
-            <div class="review-date">${new Date(review.timestamp).toLocaleDateString()}</div>
+            <div class="review-date">${new Date(review.timestamp).toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric'
+            })}</div>
         </div>
     `).join('');
 
     const track = document.querySelector('.reviews-track');
     track.innerHTML = reviewHTML;
     
-    // Reiniciar posición
     currentPosition = 0;
     track.style.transform = `translateX(0)`;
     updateCarouselButtons();
@@ -1124,12 +1127,11 @@ function updateReviewsDisplay(reviews) {
 
 function moveCarousel(direction) {
     const track = document.querySelector('.reviews-track');
-    const cardWidth = 350; // 300px width + 50px margin
-    const maxPosition = (totalReviews - 2) * cardWidth * -1; // Mostrar 2 reseñas a la vez
+    const cardWidth = 350;
+    const maxPosition = (totalReviews - 2) * cardWidth * -1;
     
     currentPosition += direction * cardWidth;
     
-    // Limitar el movimiento
     if (currentPosition > 0) currentPosition = 0;
     if (currentPosition < maxPosition) currentPosition = maxPosition;
     
@@ -1143,14 +1145,12 @@ function updateCarouselButtons() {
     const cardWidth = 350;
     const maxPosition = (totalReviews - 2) * cardWidth * -1;
 
-    // Botón previo
     if (currentPosition < 0) {
         prevButton.classList.add('visible');
     } else {
         prevButton.classList.remove('visible');
     }
 
-    // Botón siguiente
     if (currentPosition > maxPosition) {
         nextButton.classList.add('visible');
     } else {

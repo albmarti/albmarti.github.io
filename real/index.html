@@ -470,17 +470,20 @@
     position: relative;
     overflow: hidden;
     margin: 2rem auto;
-    max-width: 650px; /* Ancho para 2 reseñas + espacio */
+    max-width: 750px; /* Aumentado para dar espacio a los botones */
+    padding: 0 60px; /* Espacio para los botones */
 }
 
 .reviews-carousel .reviews-track {
     display: flex;
     transition: transform 0.5s ease;
+    gap: 30px; /* Espacio entre reseñas */
+    width: 100%;
 }
 
 .reviews-carousel .review-card {
     flex: 0 0 300px;
-    margin-right: 50px;
+    min-width: 300px; /* Asegura el ancho mínimo */
 }
 
 .carousel-button {
@@ -490,30 +493,30 @@
     background: #5a4b3c;
     color: white;
     border: none;
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    font-size: 1.2rem;
-    box-shadow: 0 2px 8px rgba(90,75,60,0.07);
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(90,75,60,0.15);
+    z-index: 2;
 }
 
 .carousel-button:hover {
     background: #7a6650;
+    transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-button.prev {
-    left: -50px;
-    opacity: 0;
-    pointer-events: none;
+    left: 0;
 }
 
 .carousel-button.next {
-    right: -50px;
+    right: 0;
 }
 
 .carousel-button.visible {
@@ -524,7 +527,7 @@
 .carousel-button:disabled {
     background: #ccc;
     cursor: not-allowed;
-    opacity: 0;
+    opacity: 0.5;
     pointer-events: none;
 }    .review-card {
         background: #f3efeb;
@@ -993,7 +996,80 @@ whatsappFloat.innerHTML = `
 document.head.appendChild(whatsappFloat);
 
 // Formulario dinámico Google Calendar
+// Variables globales para el carrusel
+let currentPosition = 0;
+let totalReviews = 0;
+
+// Función para actualizar los botones del carrusel
+function updateCarouselButtons() {
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    
+    if (prevButton && nextButton) {
+        prevButton.classList.toggle('visible', window.carouselState.currentPosition > 0);
+        nextButton.classList.toggle('visible', 
+            window.carouselState.currentPosition < window.carouselState.reviewsData.length - 2);
+    }
+}
+
+// Función para mover el carrusel
+function moveCarousel(direction) {
+    const track = document.querySelector('.reviews-track');
+    if (!track) return;
+
+    const itemWidth = 330; // Ancho de cada reseña + margen
+    const maxPosition = window.carouselState.reviewsData.length - 2;
+    
+    window.carouselState.currentPosition = Math.max(0, 
+        Math.min(window.carouselState.currentPosition + direction, maxPosition));
+    
+    track.style.transform = `translateX(-${window.carouselState.currentPosition * itemWidth}px)`;
+    updateCarouselButtons();
+}
+
+// Función para crear una tarjeta de reseña
+function createReviewCard(review) {
+    return `
+        <div class="review-card">
+            <div class="review-header">
+                <span class="review-author">${review.author}</span>
+                <div class="review-rating">
+                    ${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}
+                </div>
+            </div>
+            <p class="review-content">${review.content}</p>
+            <div class="review-date">${new Date(review.date).toLocaleDateString()}</div>
+        </div>
+    `;
+}
+
+// Función para inicializar el carrusel
+function initializeCarousel() {
+    const track = document.querySelector('.reviews-track');
+    if (!track) return;
+
+    // Limpiar el track
+    track.innerHTML = '';
+    
+    // Agregar todas las reseñas
+    window.carouselState.reviewsData.forEach(review => {
+        track.innerHTML += createReviewCard(review);
+    });
+    
+    // Inicializar posición y actualizar botones
+    window.carouselState.currentPosition = 0;
+    updateCarouselButtons();
+    
+    // Mostrar los botones inicialmente
+    const buttons = document.querySelectorAll('.carousel-button');
+    buttons.forEach(button => button.style.display = 'flex');
+}
+
+// Inicializar cuando el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function() {
+    // Cargar las reseñas desde Google Sheets
+    loadReviews();
+    
     const form = document.getElementById('calendarForm');
     if (form) {
         form.addEventListener('submit', function(e) {
@@ -1082,6 +1158,11 @@ window.onload = function() {
 
 // Sistema de reseñas
 const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxa1LDH2R7FopqB5zLJc9SJ8dBlDUCA20MA1cKLgg_WNQORJKOtAHJ3SbeEzhIFoDQz/exec';
+const carouselState = {
+    position: 0,
+    totalReviews: 0,
+    cardWidth: 350
+};
 
 async function loadReviews() {
     try {
@@ -1097,11 +1178,8 @@ async function loadReviews() {
     }
 }
 
-let currentPosition = 0;
-let totalReviews = 0;
-
 function updateReviewsDisplay(reviews) {
-    totalReviews = reviews.length;
+    carouselState.totalReviews = reviews.length;
     const reviewHTML = reviews.map(review => `
         <div class="review-card">
             <div class="review-header">
@@ -1118,54 +1196,56 @@ function updateReviewsDisplay(reviews) {
     `).join('');
 
     const track = document.querySelector('.reviews-track');
-    track.innerHTML = reviewHTML;
-    
-    currentPosition = 0;
-    track.style.transform = `translateX(0)`;
-    updateCarouselButtons();
+    if (track) {
+        track.innerHTML = reviewHTML;
+        carouselState.position = 0;
+        track.style.transform = `translateX(0)`;
+        updateCarouselButtons();
+    }
 }
 
 function moveCarousel(direction) {
     const track = document.querySelector('.reviews-track');
-    const cardWidth = 350;
-    const maxPosition = (totalReviews - 2) * cardWidth * -1;
+    if (!track) return;
+
+    const maxPosition = (carouselState.totalReviews - 2) * carouselState.cardWidth * -1;
+    carouselState.position += direction * carouselState.cardWidth;
     
-    currentPosition += direction * cardWidth;
+    if (carouselState.position > 0) carouselState.position = 0;
+    if (carouselState.position < maxPosition) carouselState.position = maxPosition;
     
-    if (currentPosition > 0) currentPosition = 0;
-    if (currentPosition < maxPosition) currentPosition = maxPosition;
-    
-    track.style.transform = `translateX(${currentPosition}px)`;
+    track.style.transform = `translateX(${carouselState.position}px)`;
     updateCarouselButtons();
 }
 
 function updateCarouselButtons() {
     const prevButton = document.getElementById('prevButton');
     const nextButton = document.getElementById('nextButton');
-    const cardWidth = 350;
-    const maxPosition = (totalReviews - 2) * cardWidth * -1;
+    const maxPosition = (carouselState.totalReviews - 2) * carouselState.cardWidth * -1;
 
-    if (currentPosition < 0) {
-        prevButton.classList.add('visible');
-    } else {
-        prevButton.classList.remove('visible');
+    if (prevButton) {
+        prevButton.classList.toggle('visible', carouselState.position < 0);
     }
-
-    if (currentPosition > maxPosition) {
-        nextButton.classList.add('visible');
-    } else {
-        nextButton.classList.remove('visible');
+    if (nextButton) {
+        nextButton.classList.toggle('visible', carouselState.position > maxPosition);
     }
 }
 
 function updateAverageRating(reviews) {
+    if (!reviews || reviews.length === 0) return;
+
     const totalRatings = reviews.reduce((acc, rev) => acc + parseInt(rev.rating), 0);
     const averageRating = (totalRatings / reviews.length) || 0;
-    const totalReviews = reviews.length;
     
-    document.querySelector('.rating-number').textContent = averageRating.toFixed(1);
-    document.querySelector('.stars-display').innerHTML = getStarDisplay(averageRating);
-    document.querySelector('.total-reviews').textContent = `${totalReviews} opinione${totalReviews === 1 ? '' : 's'}`;
+    const ratingNumber = document.querySelector('.rating-number');
+    const starsDisplay = document.querySelector('.stars-display');
+    const totalReviewsElement = document.querySelector('.total-reviews');
+    
+    if (ratingNumber) ratingNumber.textContent = averageRating.toFixed(1);
+    if (starsDisplay) starsDisplay.innerHTML = getStarDisplay(averageRating);
+    if (totalReviewsElement) {
+        totalReviewsElement.textContent = `${reviews.length} opinione${reviews.length === 1 ? '' : 's'}`;
+    }
 }
 
 function getStarDisplay(rating) {

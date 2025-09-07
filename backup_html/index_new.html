@@ -1,0 +1,159 @@
+<!-- Contenido previo del head y estilos -->
+
+<style>
+/* Añadir después de los estilos existentes */
+
+/* Estilos para el estado de carga */
+@keyframes shimmer {
+    0% { background-position: -468px 0; }
+    100% { background-position: 468px 0; }
+}
+
+.skeleton {
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-text {
+    height: 1em;
+    background: #f3efeb;
+    border-radius: 3px;
+    animation: pulse 1.5s infinite;
+    margin: 0.5rem 0;
+}
+
+.skeleton-stars {
+    color: #f3efeb;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.6; }
+}
+
+.loading .rating-number,
+.loading .stars-display,
+.loading .total-reviews {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.loaded .rating-number,
+.loaded .stars-display,
+.loaded .total-reviews {
+    opacity: 1;
+}
+
+.reviews-container.loading .review-card {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.reviews-container .review-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.reviews-container .review-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<!-- En la sección de reviews -->
+<section id="reviews" class="reviews-section">
+    <h2>Opiniones de Pacientes</h2>
+    <div class="reviews-summary">
+        <div class="average-rating loading">
+            <div class="rating-number">
+                <div class="skeleton-text"></div>
+            </div>
+            <div class="stars-display">
+                <div class="skeleton-stars">★★★★★</div>
+            </div>
+            <div class="total-reviews">
+                <div class="skeleton-text"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="reviews-container loading">
+        <div class="review-card skeleton">
+            <div class="review-header">
+                <span class="review-author"><div class="skeleton-text"></div></span>
+                <span class="review-rating">★★★★★</span>
+            </div>
+            <div class="review-content">
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text"></div>
+            </div>
+            <div class="review-date"><div class="skeleton-text"></div></div>
+        </div>
+        <div class="review-card skeleton">
+            <div class="review-header">
+                <span class="review-author"><div class="skeleton-text"></div></span>
+                <span class="review-rating">★★★★★</span>
+            </div>
+            <div class="review-content">
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text"></div>
+            </div>
+            <div class="review-date"><div class="skeleton-text"></div></div>
+        </div>
+    </div>
+
+    <!-- Resto del contenido de reviews -->
+</section>
+
+<!-- Modificar el JavaScript -->
+<script>
+// Sistema de reseñas
+const GOOGLE_SHEET_URL = 'TU_URL_DE_GOOGLE_SHEET';
+
+async function loadReviews() {
+    try {
+        const response = await fetch(GOOGLE_SHEET_URL + '?action=getReviews');
+        const data = await response.json();
+        
+        if (data.reviews) {
+            updateReviewsDisplay(data.reviews);
+            updateAverageRating(data.reviews);
+            
+            // Remover estado de carga
+            document.querySelector('.average-rating').classList.remove('loading');
+            document.querySelector('.average-rating').classList.add('loaded');
+            document.querySelector('.reviews-container').classList.remove('loading');
+            
+            // Animar la aparición de las reseñas
+            const cards = document.querySelectorAll('.review-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, index * 200); // Añadir delay entre cada tarjeta
+            });
+        }
+    } catch (error) {
+        console.error('Error loading reviews:', error);
+    }
+}
+
+function updateReviewsDisplay(reviews) {
+    const container = document.querySelector('.reviews-container');
+    container.innerHTML = reviews.map(review => `
+        <div class="review-card">
+            <div class="review-header">
+                <span class="review-author">${review.name}</span>
+                <span class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}</span>
+            </div>
+            <div class="review-content">${review.review}</div>
+            <div class="review-date">${new Date(review.timestamp).toLocaleDateString()}</div>
+        </div>
+    `).join('');
+}
+
+// Resto del código JavaScript existente...
+</script>

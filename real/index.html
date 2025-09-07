@@ -465,77 +465,67 @@
         margin-top: 0.5rem;
     }
 
-.reviews-container {
-    display: grid;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-/* Carousel styles */
 .reviews-carousel {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    margin: 2rem -1rem;
-    padding: 0 1rem;
+    position: relative;
+    overflow: hidden;
+    margin: 2rem auto;
+    max-width: 650px; /* Ancho para 2 reseñas + espacio */
+}
+
+.reviews-carousel .reviews-track {
+    display: flex;
+    transition: transform 0.5s ease;
 }
 
 .reviews-carousel .review-card {
     flex: 0 0 300px;
-    margin-right: 1rem;
-    scroll-snap-align: start;
-}
-
-.carousel-controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
+    margin-right: 50px;
 }
 
 .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background: #5a4b3c;
     color: white;
     border: none;
-    border-radius: 50%;
+    border-radius: 5px;
     width: 40px;
     height: 40px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, opacity 0.3s;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(90,75,60,0.07);
 }
 
 .carousel-button:hover {
     background: #7a6650;
 }
 
+.carousel-button.prev {
+    left: -50px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.carousel-button.next {
+    right: -50px;
+}
+
+.carousel-button.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .carousel-button:disabled {
     background: #ccc;
     cursor: not-allowed;
-}
-
-.view-toggle {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
-}
-
-.view-toggle button {
-    background: none;
-    border: none;
-    color: #5a4b3c;
-    cursor: pointer;
-    padding: 0.5rem;
-    font-weight: bold;
-}
-
-.view-toggle button.active {
-    text-decoration: underline;
+    opacity: 0;
+    pointer-events: none;
 }    .review-card {
         background: #f3efeb;
         border-radius: 10px;
@@ -877,21 +867,12 @@
         </div>
     </div>
     
-    <div class="view-toggle">
-        <button onclick="toggleView('grid')" class="active">Ver en grid</button>
-        <button onclick="toggleView('carousel')">Ver en carousel</button>
-    </div>
-
-    <div class="reviews-container">
-        <!-- Las reseñas se cargarán aquí dinámicamente en modo grid -->
-    </div>
-
-    <div class="reviews-carousel" style="display: none;">
-        <!-- Las reseñas se cargarán aquí dinámicamente en modo carousel -->
-        <div class="carousel-controls">
-            <button class="carousel-button" onclick="moveCarousel(-1)" id="prevButton">←</button>
-            <button class="carousel-button" onclick="moveCarousel(1)" id="nextButton">→</button>
+    <div class="reviews-carousel">
+        <div class="reviews-track">
+            <!-- Las reseñas se cargarán aquí dinámicamente -->
         </div>
+        <button class="carousel-button prev" onclick="moveCarousel(-1)" id="prevButton">←</button>
+        <button class="carousel-button next" onclick="moveCarousel(1)" id="nextButton">→</button>
     </div>
 
     <button class="add-review-btn" onclick="showReviewForm()">Añadir una opinión</button>
@@ -1116,7 +1097,11 @@ async function loadReviews() {
     }
 }
 
+let currentPosition = 0;
+let totalReviews = 0;
+
 function updateReviewsDisplay(reviews) {
+    totalReviews = reviews.length;
     const reviewHTML = reviews.map(review => `
         <div class="review-card">
             <div class="review-header">
@@ -1128,63 +1113,49 @@ function updateReviewsDisplay(reviews) {
         </div>
     `).join('');
 
-    const container = document.querySelector('.reviews-container');
-    const carousel = document.querySelector('.reviews-carousel');
+    const track = document.querySelector('.reviews-track');
+    track.innerHTML = reviewHTML;
     
-    container.innerHTML = reviewHTML;
-    carousel.innerHTML = reviewHTML + `
-        <div class="carousel-controls">
-            <button class="carousel-button" onclick="moveCarousel(-1)" id="prevButton">←</button>
-            <button class="carousel-button" onclick="moveCarousel(1)" id="nextButton">→</button>
-        </div>
-    `;
-
+    // Reiniciar posición
+    currentPosition = 0;
+    track.style.transform = `translateX(0)`;
     updateCarouselButtons();
 }
 
-function toggleView(view) {
-    const container = document.querySelector('.reviews-container');
-    const carousel = document.querySelector('.reviews-carousel');
-    const [gridBtn, carouselBtn] = document.querySelectorAll('.view-toggle button');
-
-    if (view === 'grid') {
-        container.style.display = 'grid';
-        carousel.style.display = 'none';
-        gridBtn.classList.add('active');
-        carouselBtn.classList.remove('active');
-    } else {
-        container.style.display = 'none';
-        carousel.style.display = 'flex';
-        gridBtn.classList.remove('active');
-        carouselBtn.classList.add('active');
-        updateCarouselButtons();
-    }
-}
-
 function moveCarousel(direction) {
-    const carousel = document.querySelector('.reviews-carousel');
-    const scrollAmount = 300; // Ancho de una tarjeta
-    carousel.scrollBy({
-        left: direction * scrollAmount,
-        behavior: 'smooth'
-    });
+    const track = document.querySelector('.reviews-track');
+    const cardWidth = 350; // 300px width + 50px margin
+    const maxPosition = (totalReviews - 2) * cardWidth * -1; // Mostrar 2 reseñas a la vez
     
-    // Actualizar estado de los botones después del scroll
-    setTimeout(updateCarouselButtons, 300);
+    currentPosition += direction * cardWidth;
+    
+    // Limitar el movimiento
+    if (currentPosition > 0) currentPosition = 0;
+    if (currentPosition < maxPosition) currentPosition = maxPosition;
+    
+    track.style.transform = `translateX(${currentPosition}px)`;
+    updateCarouselButtons();
 }
 
 function updateCarouselButtons() {
-    const carousel = document.querySelector('.reviews-carousel');
     const prevButton = document.getElementById('prevButton');
     const nextButton = document.getElementById('nextButton');
+    const cardWidth = 350;
+    const maxPosition = (totalReviews - 2) * cardWidth * -1;
 
-    if (!carousel || !prevButton || !nextButton) return;
+    // Botón previo
+    if (currentPosition < 0) {
+        prevButton.classList.add('visible');
+    } else {
+        prevButton.classList.remove('visible');
+    }
 
-    const scrollPos = carousel.scrollLeft;
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-
-    prevButton.disabled = scrollPos <= 0;
-    nextButton.disabled = scrollPos >= maxScroll;
+    // Botón siguiente
+    if (currentPosition > maxPosition) {
+        nextButton.classList.add('visible');
+    } else {
+        nextButton.classList.remove('visible');
+    }
 }
 
 function updateAverageRating(reviews) {

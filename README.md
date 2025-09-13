@@ -17,7 +17,7 @@ Este repositorio contiene la web profesional de Laura Martínez Ortega, psicólo
 El sitio está publicado con GitHub Pages:
 
 ```
-https://albmarti.github.io/
+https://lauramartinezortegapsicologia.es
 ```
 
 ## ¿Cómo modificar o actualizar la web?
@@ -35,8 +35,3 @@ Para cualquier consulta, escribe a contacto@lauramartinezortegapsicologia.es o u
 - [Aviso legal](aviso-legal.html)
 - [Política de privacidad](privacidad.html)
 - [Política de cookies](cookies.html)
-
-
-## Documentacion de como usar GitHub Pages :
-1. https://docs.github.com/en/pages/quickstart
-2. https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site

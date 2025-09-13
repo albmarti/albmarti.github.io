@@ -7,14 +7,14 @@
     
     <!-- SEO Meta Tags -->
     <title>Psicóloga Laura Martínez Ortega | Terapia Online | Psicología Perinatal</title>
-    <meta name="description" content="Psicóloga especializada en terapia online, psicología perinatal y procesos de reproducción asistida. Acompañamiento profesional y empático para tu bienestar emocional.">
-    <meta name="keywords" content="psicóloga online, terapia online, psicología perinatal, reproducción asistida, Laura Martínez Ortega, psicóloga Madrid, acompañamiento psicológico">
+    <meta name="description" content="Psicóloga General Sanitaria, especializada en psicología perinatal y procesos de reproducción asistida. Acompañamiento profesional y empático para tu bienestar emocional.">
+    <meta name="keywords" content="psicóloga online, terapia online, psicología perinatal, reproducción asistida, psicóloga infertilidad, Laura Martínez Ortega, autoestima, crecimiento personal, acompañamiento psicológico">
     <meta name="author" content="Laura Martínez Ortega">
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Laura Martínez Ortega - Psicóloga Especialista en Terapia Online">
-    <meta property="og:description" content="Acompañamiento psicológico online desde la empatía y el profesionalismo. Especializada en psicología perinatal y reproducción asistida.">
+    <meta property="og:title" content="Laura Martínez Ortega - Psicóloga General Sanitaria">
+    <meta property="og:description" content="Acompañamiento psicológico online. Maternidad e infertilidad.">
     <meta property="og:image" content="https://lauramartinezortegapsicologia.es/images/Logo.png">
     <meta property="og:url" content="https://lauramartinezortegapsicologia.es">
     
@@ -95,7 +95,7 @@
     </script>
 
     <!-- Metadatos de verificación -->
-    <meta name="google-site-verification" content="tu_código_de_verificación">
+    <meta name="google-site-verification" content="9aSwgzKCMWAp9H3Du6mpeKCSCmLsjBXe_IsNyVcuJj8">
     <meta name="msvalidate.01" content="tu_código_de_verificación">
     
     <style>
@@ -241,6 +241,7 @@
             top: 2.2rem;
             right: 2rem;
             z-index: 1001;
+            transition: transform 0.3s ease;
         }
         .hamburger span {
             height: 4px;
@@ -248,15 +249,13 @@
             background: #5a4b3c;
             margin: 5px 0;
             border-radius: 2px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: relative;
+            transition: all 0.3s ease;
+            transform-origin: left center;
+        }
         header img {
             max-width: 100px;
             height: auto;
             margin-left: 1.5rem;
-        }
         }
         nav {
             background: linear-gradient(135deg, var(--primary-light), var(--flower-color));
@@ -426,6 +425,9 @@
             color: var(--accent-color);
         }
         @media (max-width: 800px) {
+            section {
+                padding: 1.5rem;
+            }
             .hamburger {
                 display: flex;
             }
@@ -440,14 +442,31 @@
                 background: #e8dcd1;
                 z-index: 1000;
                 padding-left: 0;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
             }
             nav.open {
                 display: flex;
+                opacity: 1;
+                transform: translateY(0);
             }
             nav a {
                 width: 100%;
                 padding: 1rem 2rem;
                 border-bottom: 1px solid #c2b6a6;
+            }
+            .servicios-grid {
+                gap: 1.5rem;
+            }
+            .servicio-card {
+                margin: 0 1rem;
+            }
+        }
+        
+        @media (min-width: 601px) and (max-width: 900px) {
+            .servicios-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         @media (max-width: 600px) {
@@ -1157,8 +1176,8 @@
 
 <section id="inicio">
     <h2>¡Te doy la bienvenida!</h2>
-    <p>Este es un espacio seguro para tu bienestar emocional, puedo ayudarte si estás en búsqueda o transitando la maternidad. También puedo acompañarte si estás atravesando una crisis vital y sientes que todo se vuelve demasiado. Quiero que sepas que no tienes que enfrentarlo en soledad</p>
-    <p>Te ofrezco un espacio seguro, sin jucios, donde podrás hablar de lo que estás viviendo y encontrar una guía para orientarte en este momento.</p>
+    <p>Este es un espacio seguro para tu bienestar emocional, puedo ayudarte si estás en búsqueda o transitando la maternidad. También puedo acompañarte si estás atravesando una crisis vital y sientes que todo se vuelve demasiado. Quiero que sepas que no tienes que enfrentarlo en soledad.</p>
+    <p>Te ofrezco un espacio sin juicios, donde podrás hablar de lo que estás viviendo y encontrar una guía para orientarte en este momento.</p>
 </section>
 
 <section id="sobre-mi">

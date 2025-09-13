@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Figura humana estilizada individual -->
+    <g stroke="#b85f44" stroke-width="2" fill="none">
+        <!-- Círculo de respeto alrededor de la figura -->
+        <circle cx="12" cy="12" r="9" stroke-dasharray="2 2"/>
+        
+        <!-- Cabeza -->
+        <circle cx="12" cy="7" r="2.5"/>
+        
+        <!-- Cuerpo -->
+        <path d="M12 9.5 L12 15" stroke-linecap="round"/>
+        
+        <!-- Brazos extendidos en gesto de libertad -->
+        <path d="M12 12 L7 10 M12 12 L17 10" stroke-linecap="round"/>
+        
+        <!-- Piernas en posición de movimiento/danza -->
+        <path d="M12 15 L9 19 M12 15 L15 19" stroke-linecap="round"/>
+    </g>
+</svg>

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="../images/Logo.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="images/Logo.png" sizes="32x32">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
@@ -101,15 +101,10 @@
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 
-            'sha256-Tg4q8m3H4vvSspsGh92DOvQlkiE0uYvMVGZl8/vHB+o=' 
-            https://www.google.com 
-            https://www.googletagmanager.com 
-            https://www.google-analytics.com 
-            https://ssl.google-analytics.com;
+        script-src 'self' 'unsafe-inline' https://www.google.com https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com;
         style-src 'self' 'unsafe-inline';
         img-src 'self' data: https: *.google.com *.githubusercontent.com https://www.google-analytics.com https://ssl.google-analytics.com;
-        connect-src 'self' https://wa.link https://www.google-analytics.com;
+        connect-src 'self' https://wa.link https://www.google-analytics.com https://script.google.com https://script.googleusercontent.com;
         frame-src https://calendar.google.com;
         font-src 'self';
         base-uri 'self';
@@ -267,15 +262,28 @@
             right: 2rem;
             z-index: 1001;
             transition: transform 0.3s ease;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         .hamburger span {
-            height: 4px;
-            width: 30px;
-            background: #5a4b3c;
-            margin: 5px 0;
+            height: 3px;
+            width: 25px;
+            background: var(--text-color);
+            margin: 3px 0;
             border-radius: 2px;
             transition: all 0.3s ease;
-            transform-origin: left center;
+            transform-origin: center;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
         }
         header img {
             max-width: 100px;
@@ -450,6 +458,10 @@
             color: var(--accent-color);
         }
         @media (max-width: 800px) {
+            header {
+                position: relative;
+                padding: 2rem 0;
+            }
             section {
                 padding: 1.5rem;
             }
@@ -458,28 +470,52 @@
             }
             nav {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: stretch;
                 display: none;
                 width: 100%;
-                position: absolute;
-                top: 70px;
+                position: fixed;
+                top: 120px;
                 left: 0;
-                background: #e8dcd1;
+                right: 0;
+                background: var(--background-light);
                 z-index: 1000;
-                padding-left: 0;
+                padding: 0;
                 opacity: 0;
                 transform: translateY(-10px);
-                transition: opacity 0.3s ease, transform 0.3s ease;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 20px var(--shadow-color);
+                border: 1px solid rgba(196, 165, 157, 0.3);
+                border-radius: 15px;
+                backdrop-filter: blur(10px);
+                overflow: hidden;
             }
             nav.open {
-                display: flex;
-                opacity: 1;
-                transform: translateY(0);
+                display: flex !important;
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+                visibility: visible !important;
             }
             nav a {
                 width: 100%;
-                padding: 1rem 2rem;
-                border-bottom: 1px solid #c2b6a6;
+                padding: 1.2rem 2rem;
+                border-bottom: 1px solid rgba(196, 165, 157, 0.2);
+                margin: 0;
+                text-align: left;
+                background: transparent;
+                transition: all 0.3s ease;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                box-sizing: border-box;
+            }
+            nav a:hover {
+                background: rgba(196, 165, 157, 0.1);
+                color: var(--accent-color);
+                transform: translateX(5px);
+            }
+            nav a:last-child {
+                border-bottom: none;
+                border-radius: 0 0 15px 15px;
             }
             .servicios-grid {
                 gap: 1.5rem;
@@ -1152,6 +1188,47 @@
     .rating-input input[type="radio"]:checked ~ label {
         color: #5a4b3c;
     }
+
+    /* Botón flotante de WhatsApp */
+    #whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1500;
+        background: #25D366;
+        border-radius: 50%;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    
+    #whatsapp-float:hover {
+        background: #128C7E;
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    #whatsapp-float img {
+        width: 40px;
+        height: 40px;
+        display: block;
+    }
+    
+    @media (max-width: 600px) {
+        #whatsapp-float {
+            bottom: 16px;
+            right: 16px;
+            padding: 10px;
+        }
+        #whatsapp-float img {
+            width: 36px;
+            height: 36px;
+        }
+    }
     </style>
 </head>
 <body>
@@ -1175,14 +1252,14 @@
             <p style="margin-top: 0.5rem; font-size: 1.2rem; color: var(--accent-color); font-weight: 500; letter-spacing: 1px;">~ Psicóloga General Sanitaria ~</p>
             <div class="social-icons">
                 <a href="https://instagram.com/lauramartinezortega.psicologa" target="_blank" rel="noopener noreferrer">
-                    <img src="../social-icons/instagram.svg" alt="Instagram" class="social-icon">
+                    <img src="social-icons/instagram.svg" alt="Instagram" class="social-icon">
                 </a>
                 <a href="https://www.linkedin.com/in/laura-martínez-ortega-5ab1901b0" target="_blank" rel="noopener noreferrer">
-                    <img src="../social-icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+                    <img src="social-icons/linkedin.svg" alt="LinkedIn" class="social-icon">
                 </a>
             </div>
         </div>
-        <img src="../images/Logo.svg" alt="Logo Laura Martínez Ortega" style="max-width:100px;height:auto;margin-left:1.5rem;">
+        <img src="images/Logo.svg" alt="Logo Laura Martínez Ortega" style="max-width:100px;height:auto;margin-left:1.5rem;">
         <div class="hamburger" id="hamburger" aria-label="Abrir menú" tabindex="0" role="button">
             <span></span>
             <span></span>
@@ -1223,7 +1300,7 @@
       <p>Estás en tu momento. Y no tienes por qué vivirlo en soledad.</p>
     </div>
     <div class="sobre-mi-img">
-      <img src="../images/foto_profesional.jpg" alt="Laura Martínez Ortega - Psicóloga" style="max-width:350px;width:100%;height:auto;border-radius:12px;margin-left:2rem;box-shadow:0 2px 8px rgba(90,75,60,0.1);"
+      <img src="images/foto_profesional.jpg" alt="Laura Martínez Ortega - Psicóloga" style="max-width:350px;width:100%;height:auto;border-radius:12px;margin-left:2rem;box-shadow:0 2px 8px rgba(90,75,60,0.1);"
     </div>
   </div>
 </section>
@@ -1233,7 +1310,7 @@
     <div class="valores-grid">
         <div class="valor-card">
             <div class="valor-icon">
-                <img src="../images/heart.png" alt="Empatía y Humanidad" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
+                <img src="images/heart.png" alt="Empatía y Humanidad" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
             
             </div>
             <h3>Empatía y Humanidad</h3>
@@ -1242,7 +1319,7 @@
 
         <div class="valor-card">
             <div class="valor-icon">
-                <img src="../images/privacidad.svg" alt="Privacidad" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
+                <img src="images/privacidad.svg" alt="Privacidad" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
             </div>
             <h3>Privacidad</h3>
             <p>Sé lo importante que es sentirte seguro para hablar con libertad. Lo que compartes en terapia no sale de terapia. Nadie más sabrá lo que cuentas, a menos que tú lo decidas. Siempre tendrás la tranquilidad de que tu información está protegida y cuidada conmigo.</p>
@@ -1250,7 +1327,7 @@
 
         <div class="valor-card">
             <div class="valor-icon">
-                <img src="../images/individualidad.svg" alt="Respeto por la Individualidad" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
+                <img src="images/individualidad.svg" alt="Respeto por la Individualidad" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
             </div>
             <h3>Respeto por la Individualidad</h3>
             <p>No hay un único molde ni una sola manera de vivir o de sanar. Cada persona tiene su propio ritmo, su forma de mirar el mundo y sus propias necesidades. Para mí, respetar tu individualidad significa adaptar el proceso a ti, sin forzarte a encajar en lo que "debería ser". Tu camino es único, y mi trabajo es acompañarte a recorrerlo.</p>
@@ -1258,7 +1335,7 @@
 
         <div class="valor-card">
             <div class="valor-icon">
-                <img src="../images/formacion.svg" alt="Formación Continua" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
+                <img src="images/formacion.svg" alt="Formación Continua" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
             </div>
             <h3>Formación Continua</h3>
             <p>La psicología está en constante evolución, y yo con ella. Me esfuerzo por seguir aprendiendo cada día para darte siempre lo mejor de mi profesión y acompañarte con herramientas actualizadas y útiles.</p>
@@ -1272,7 +1349,7 @@
     <div class="servicios-grid">
         <div class="servicio-card">
             <div class="servicio-icon">
-                <img src="../images/pregnant.png" alt="Procesos de maternidad" loading="lazy">
+                <img src="images/pregnant.png" alt="Procesos de maternidad" loading="lazy">
             </div>
             <h3>Procesos relacionados con la maternidad</h3>
             <p>Acompañamiento especializado en todas las etapas del camino hacia la maternidad.</p>
@@ -1287,7 +1364,7 @@
 
         <div class="servicio-card">
             <div class="servicio-icon">
-                <img src="../images/mind.png" alt="Terapia psicológica" loading="lazy">
+                <img src="images/mind.png" alt="Terapia psicológica" loading="lazy">
             </div>
             <h3>Terapia psicológica para adultos</h3>
             <p>Espacio seguro para tu crecimiento personal y bienestar emocional.</p>
@@ -1314,7 +1391,7 @@
 
             <div style="margin-top: 1.5rem;">
                 <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener noreferrer" class="servicio-button">
-                    <img src="../images/whatsapp.png" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;" loading="lazy">
+                    <img src="images/whatsapp.png" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;" loading="lazy">
                     Reservar tu sesión
                 </a>
             </div>
@@ -1349,10 +1426,10 @@
         <div class="reviews-track">
         </div>
         <button class="carousel-button prev" onclick="moveCarousel(-1)" id="prevButton">
-            <img src="../images/arrow-left.svg" alt="Anterior" class="carousel-arrow">
+            <img src="images/arrow-left.svg" alt="Anterior" class="carousel-arrow">
         </button>
         <button class="carousel-button next" onclick="moveCarousel(1)" id="nextButton">
-            <img src="../images/arrow-right.svg" alt="Siguiente" class="carousel-arrow">
+            <img src="images/arrow-right.svg" alt="Siguiente" class="carousel-arrow">
         </button>
     </div>
 
@@ -1405,12 +1482,12 @@
     <div class="contact-cards">
         <div class="contact-card">
             <h3>Correo electrónico</h3>
-            <img src="../images/email.png" alt="Email" style="width:32px;height:32px;margin-bottom:0.5rem;">
+            <img src="images/email.png" alt="Email" style="width:32px;height:32px;margin-bottom:0.5rem;">
             <a href="mailto:contacto@lauramartinezortegapsicologia.es">Email</a>
         </div>
         <div class="contact-card">
             <h3>WhatsApp</h3>
-            <img src="../images/whatsapp.png" alt="WhatsApp" style="width:32px;height:32px;margin-bottom:0.5rem;">
+            <img src="images/whatsapp.png" alt="WhatsApp" style="width:32px;height:32px;margin-bottom:0.5rem;">
             <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
     </div>
@@ -1418,61 +1495,22 @@
 
 
 
-<footer>
 <!-- Botón flotante de WhatsApp -->
 <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener noreferrer" id="whatsapp-float" aria-label="Contactar por WhatsApp">
-    <img src="../images/whatsapp.png" alt="WhatsApp" style="width:48px;height:48px;">
+    <img src="images/whatsapp.png" alt="WhatsApp" style="width:48px;height:48px;">
 </a>
+
+<footer>
     <p>Laura Martínez Ortega – Psicóloga General Sanitaria</p>
     <p style="font-size: 0.9rem;"><strong>Psicóloga General Sanitaria - Col. COPCV18843</strong></p>
     <div class="legal-links">
-        <a href="../aviso-legal.html">Aviso legal</a> |
-        <a href="../privacidad.html">Política de privacidad</a> |
-        <a href="../cookies.html">Cookies</a>
+        <a href="aviso-legal.html">Aviso legal</a> |
+        <a href="privacidad.html">Política de privacidad</a> |
+        <a href="cookies.html">Cookies</a>
     </div>
 </footer>
 
 <script>
-// Botón flotante de WhatsApp
-const whatsappFloat = document.createElement('style');
-whatsappFloat.innerHTML = `
-    #whatsapp-float {
-        position: fixed;
-        bottom: 80px;
-        right: 24px;
-        z-index: 1500;
-        background: #25D366;
-        border-radius: 50%;
-        box-shadow: 0 2px 8px rgba(90,75,60,0.15);
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: box-shadow 0.2s;
-    }
-    #whatsapp-float:hover {
-        box-shadow: 0 4px 16px rgba(90,75,60,0.25);
-        background: #128C7E;
-    }
-    #whatsapp-float img {
-        width: 36px;
-        height: 36px;
-        display: block;
-    }
-    @media (max-width: 600px) {
-        #whatsapp-float {
-            bottom: 16px;
-            right: 16px;
-            padding: 6px;
-        }
-        #whatsapp-float img {
-            width: 28px;
-            height: 28px;
-        }
-    }
-`;
-document.head.appendChild(whatsappFloat);
-
 // Formulario dinámico Google Calendar
 // Variables globales para el carrusel
 let currentPosition = 0;
@@ -1545,6 +1583,8 @@ function initializeCarousel() {
 
 // Inicializar cuando el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Loaded - Starting initialization...');
+    
     // Cargar las reseñas desde Google Sheets
     loadReviews();
     
@@ -1567,31 +1607,106 @@ document.addEventListener('DOMContentLoaded', function() {
             window.open(url, '_blank');
         });
     }
-});
-// Menú hamburguesa
-const hamburger = document.getElementById('hamburger');
-const nav = document.getElementById('mainNav');
 
-function toggleMenu() {
-    nav.classList.toggle('open');
-    hamburger.classList.toggle('active');
-}
+    // Menú hamburguesa
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('mainNav');
+    
+    console.log('Hamburger element:', hamburger);
+    console.log('Nav element:', nav);
 
-hamburger.addEventListener('click', toggleMenu);
-hamburger.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-        toggleMenu();
-    }
-});
+    if (hamburger && nav) {
+        console.log('Both elements found, setting up menu...');
+        
+        function toggleMenu() {
+            console.log('Toggle menu called');
+            console.log('Nav current classes:', nav.className);
+            console.log('Hamburger current classes:', hamburger.className);
+            
+            nav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            
+            console.log('Nav classes after toggle:', nav.className);
+            console.log('Hamburger classes after toggle:', hamburger.className);
+            
+            // Agregar/quitar overlay
+            if (nav.classList.contains('open')) {
+                document.body.style.overflow = 'hidden'; // Prevenir scroll
+                addOverlay();
+            } else {
+                document.body.style.overflow = ''; // Restaurar scroll
+                removeOverlay();
+            }
+        }
 
-// Cierra el menú al hacer clic en un enlace (en móvil)
-nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (window.innerWidth <= 800) {
+        function closeMenu() {
             nav.classList.remove('open');
             hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+            removeOverlay();
         }
-    });
+
+        function addOverlay() {
+            const existingOverlay = document.getElementById('menu-overlay');
+            if (existingOverlay) return;
+            
+            const overlay = document.createElement('div');
+            overlay.id = 'menu-overlay';
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.3);
+                z-index: 999;
+                backdrop-filter: blur(2px);
+            `;
+            overlay.addEventListener('click', closeMenu);
+            document.body.appendChild(overlay);
+        }
+
+        function removeOverlay() {
+            const overlay = document.getElementById('menu-overlay');
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+
+        hamburger.addEventListener('click', function(e) {
+            console.log('Hamburger clicked!', e);
+            toggleMenu();
+        });
+        hamburger.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
+            }
+        });
+
+        // Cierra el menú al hacer clic en un enlace (en móvil)
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 800) {
+                    closeMenu();
+                }
+            });
+        });
+
+        // Cerrar menú con tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('open')) {
+                closeMenu();
+            }
+        });
+
+        // Cerrar menú al redimensionar ventana
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 800 && nav.classList.contains('open')) {
+                closeMenu();
+            }
+        });
+    }
 });
 
 // Gestión de cookies
@@ -1791,3 +1906,5 @@ window.onclick = function(event) {
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">

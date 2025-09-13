@@ -46,10 +46,8 @@
             "closes": "20:00"
         },
         "sameAs": [
-            "https://facebook.com/tu_pagina",
             "https://instagram.com/tu_perfil",
             "https://linkedin.com/in/tu_perfil",
-            "https://twitter.com/tu_perfil"
         ],
         "founder": {
             "@type": "Person",
@@ -101,6 +99,19 @@
     <meta name="msvalidate.01" content="tu_código_de_verificación">
     
     <style>
+        :root {
+            --primary-color: #c4a59d; /* Tono seta empolvado */
+            --primary-light: #e5d6d0; /* Rosa empolvado claro */
+            --primary-dark: #8c7b75; /* Seta oscuro */
+            --accent-color: #b85f44; /* Tono seta rojizo */
+            --background-light: #f7f3f1; /* Fondo beige muy suave */
+            --text-color: #645550; /* Marrón grisáceo para texto */
+            --shadow-color: rgba(196, 165, 157, 0.15);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            --leaf-color: #9ba893; /* Verde grisáceo de las hojas */
+            --flower-color: #e8d8d3; /* Rosa pálido de las flores */
+            --secondary-light: #e0e3dc; /* Gris verdoso claro */
+        }
         .contact-cards {
             display: flex;
             gap: 2rem;
@@ -109,30 +120,43 @@
             margin-top: 1.5rem;
         }
         .contact-card {
-            background: #f3efeb;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(90,75,60,0.07);
-            padding: 1.5rem 2rem;
+            background: var(--background-light);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            padding: 2rem;
             min-width: 220px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(142, 163, 145, 0.2);
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+            border-color: var(--primary-color);
         }
         .contact-card h3 {
             margin-top: 0;
-            margin-bottom: 0.7rem;
-            color: #5a4b3c;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-size: 1.3rem;
         }
         .contact-card a {
-            color: #5a4b3c;
+            color: var(--primary-color);
             font-weight: bold;
             text-decoration: none;
             font-size: 1.1rem;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
         }
         .contact-card a:hover {
-            text-decoration: underline;
+            background: var(--background-light);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
         }
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -142,8 +166,9 @@
             color: #333;
         }
         header {
-            background-color: #ffffff;
-            padding: 2rem 0 2rem 0;
+            background: #ffffff;
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(155, 168, 147, 0.2);
         }
         .header-flex {
             display: flex;
@@ -152,7 +177,7 @@
             max-width: 900px;
             margin: 0 auto;
             position: relative;
-            gap: 2rem;
+            gap: 2.5rem;
         }
         .header-info {
             display: flex;
@@ -161,7 +186,11 @@
         }
         header h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
         }
         header img {
             max-width: 100px;
@@ -230,23 +259,43 @@
         }
         }
         nav {
-            background-color: #e8dcd1;
+            background: linear-gradient(135deg, var(--primary-light), var(--flower-color));
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             position: relative;
-            padding-left: 0;
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border-top: 1px solid rgba(196, 165, 157, 0.2);
+            border-bottom: 1px solid rgba(196, 165, 157, 0.2);
         }
         nav a {
-            padding: 1rem 1.5rem 1rem 0;
+            padding: 1rem 2rem;
             text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            transition: color 0.2s;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            margin: 0 0.5rem;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0.7rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: calc(100% - 2rem);
         }
         nav a:hover, nav a:focus {
-            color: #5a4b3c;
+            color: var(--accent-color);
+            transform: translateY(-2px);
         }
         nav.open {
             display: flex;
@@ -257,10 +306,48 @@
             margin: auto;
         }
         section h2 {
-            color: #5a4b3c;
+            color: var(--primary-dark);
+            font-size: 2.2rem;
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            text-align: center;
+            width: 100%;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(to right, 
+                transparent,
+                var(--primary-color) 20%,
+                var(--primary-color) 80%,
+                transparent
+            );
+        }
+        
+        section {
+            position: relative;
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+        }
+        
+        section::after {
+            content: '';
+            display: block;
+            margin: 3rem auto 0;
+            width: 90%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e8dcd1, transparent);
         }
         .cta {
-            background-color: #e8dcd1;
+            background: var(--background-light);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -269,45 +356,74 @@
             padding: 2.5rem 1rem;
             margin: 2rem auto;
             max-width: 600px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(90,75,60,0.07);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border: 1px solid rgba(142, 163, 145, 0.2);
         }
         .cta h2 {
             margin-bottom: 1rem;
+            color: var(--primary-dark);
         }
         .cta p {
             margin-bottom: 1.5rem;
+            color: var(--text-color);
         }
             .cta {
                 max-width: 95vw;
                 padding: 2rem 0.5rem;
             }
         .cta a {
-            background-color: #5a4b3c;
+            background: var(--gradient-primary);
             color: white;
             padding: 1rem 2rem;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 25px;
             font-size: 1.1rem;
-            transition: background 0.2s;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
         .cta a:hover, .cta a:focus {
-            background-color: #7a6650;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--shadow-color);
         }
         footer {
-            background-color: #f3efeb;
+            background: linear-gradient(135deg, var(--secondary-light), var(--background-light));
             text-align: center;
-            padding: 1rem;
+            padding: 2rem 1rem;
             font-size: 0.9rem;
+            color: var(--text-color);
+            border-top: 1px solid rgba(196, 165, 157, 0.2);
         }
         .legal-links {
-            margin-top: 0.5rem;
+            margin-top: 1rem;
             font-size: 0.85rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
         }
         .legal-links a {
-            color: #5a4b3c;
-            text-decoration: underline;
-            margin: 0 0.5rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .legal-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .legal-links a:hover::after {
+            width: 100%;
+        }
+        .legal-links a:hover {
+            color: var(--accent-color);
         }
         @media (max-width: 800px) {
             .hamburger {
@@ -346,39 +462,163 @@
           gap: 2.5rem;
           justify-content: space-between;
           flex-wrap: wrap;
+          margin-top: 2rem;
         }
         .sobre-mi-texto {
-          flex: 1 1 320px;
-          min-width: 260px;
+          flex: 1 1 500px;
+          min-width: 280px;
         }
         .sobre-mi-img {
-          flex: 0 0 260px;
+          flex: 0 0 350px;
           display: flex;
           align-items: flex-start;
           justify-content: center;
+          margin-top: 1rem;
         }
         @media (max-width: 900px) {
           .sobre-mi-flex {
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            gap: 2rem;
           }
           .sobre-mi-img {
-            margin-left: 0;
-            margin-bottom: 1rem;
+            margin: 0;
+            width: 100%;
+            max-width: 350px;
+          }
+          .sobre-mi-img img {
+            margin: 0 !important;
+            width: 100%;
+            height: auto;
           }
         }
+    /* Estilos de la sección de servicios */
+    .servicios-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 2rem;
+    }
+
+    .servicio-card {
+        background: var(--background-light);
+        border-radius: 20px;
+        padding: 2.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px var(--shadow-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid rgba(142, 163, 145, 0.2);
+    }
+
+    .servicio-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px var(--shadow-color);
+        border-color: var(--primary-color);
+    }
+
+    .servicio-icon {
+        width: 90px;
+        height: 90px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        box-shadow: 0 4px 15px var(--shadow-color);
+    }
+
+    .servicio-icon img {
+        width: 45px;
+        height: 45px;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+    }
+
+    .servicio-card h3 {
+        color: var(--primary-dark);
+        margin: 0 0 1rem;
+        font-size: 1.5rem;
+    }
+
+    .servicio-card p {
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .servicio-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem;
+        text-align: left;
+        width: 100%;
+    }
+
+    .servicio-card ul li {
+        color: var(--text-color);
+        margin-bottom: 0.8rem;
+        padding-left: 1.8rem;
+        position: relative;
+        line-height: 1.5;
+    }
+
+    .servicio-card ul li::before {
+        content: "•";
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0;
+        top: -0.2rem;
+    }
+
+    .servicio-button {
+        background: var(--gradient-primary);
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        margin-top: auto;
+        box-shadow: 0 4px 15px var(--shadow-color);
+    }
+
+    .servicio-button:hover {
+        background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-color);
+    }
+
+    @media (max-width: 768px) {
+        .servicios-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .servicio-card {
+            max-width: 100%;
+        }
+    }
+
     /* Estilos del banner de cookies */
     #cookieBanner {
         position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(232, 220, 209, 0.95);
-        padding: 1rem;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 1200px;
+        background: var(--background-light);
+        padding: 1.5rem;
+        box-shadow: 0 4px 20px var(--shadow-color);
         z-index: 1000;
         display: none;
+        border-radius: 20px;
+        border: 1px solid rgba(142, 163, 145, 0.2);
+        backdrop-filter: blur(10px);
     }
     .cookie-content {
         max-width: 900px;
@@ -387,38 +627,128 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1.5rem;
+    }
+    .cookie-content p {
+        color: var(--text-color);
+        margin: 0;
+        line-height: 1.5;
     }
     .cookie-buttons {
         display: flex;
         gap: 1rem;
     }
     .cookie-btn {
-        padding: 0.5rem 1rem;
+        padding: 0.8rem 1.5rem;
         border: none;
-        border-radius: 5px;
+        border-radius: 25px;
         cursor: pointer;
         font-weight: bold;
-        transition: background-color 0.2s;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
     }
     .cookie-accept {
-        background: #5a4b3c;
+        background: var(--gradient-primary);
         color: white;
+        box-shadow: 0 4px 15px var(--shadow-color);
     }
     .cookie-accept:hover {
-        background: #7a6650;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-color);
     }
     .cookie-reject {
-        background: #f3efeb;
-        color: #5a4b3c;
+        background: white;
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
     }
     .cookie-reject:hover {
-        background: #e5e0d9;
+        background: var(--background-light);
+        transform: translateY(-2px);
     }
     .cookie-settings {
-        color: #5a4b3c;
-        text-decoration: underline;
+        color: var(--primary-color);
+        text-decoration: none;
         margin-left: 1rem;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid transparent;
+    }
+    .cookie-settings:hover {
+        border-bottom-color: var(--primary-color);
+    }
+    
+    @media (max-width: 768px) {
+        #cookieBanner {
+            bottom: 1rem;
+            width: 95%;
+            padding: 1rem;
+        }
+        .cookie-content {
+            text-align: center;
+            justify-content: center;
+        }
+        .cookie-buttons {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    /* Estilos para la sección de valores */
+    .valores-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .valor-card {
+        background: var(--background-light);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px var(--shadow-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid rgba(142, 163, 145, 0.2);
+    }
+
+    .valor-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px var(--shadow-color);
+        border-color: var(--primary-color);
+    }
+
+    .valor-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        box-shadow: 0 4px 15px var(--shadow-color);
+    }
+
+    .valor-card h3 {
+        color: var(--primary-dark);
+        margin: 0 0 1rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    .valor-card p {
+        color: var(--text-color);
+        margin: 0;
+        line-height: 1.7;
+        text-align: left;
+    }
+
+    @media (max-width: 768px) {
+        .valores-grid {
+            grid-template-columns: 1fr;
+        }
     }
 
     /* Estilos para la sección de reseñas */
@@ -429,12 +759,13 @@
     }
 
     .reviews-summary {
-        background: #f3efeb;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(90,75,60,0.07);
+        background: var(--background-light);
+        border-radius: 20px;
+        box-shadow: 0 4px 15px var(--shadow-color);
         padding: 1.5rem 2rem;
         margin-bottom: 2rem;
         text-align: center;
+        border: 1px solid rgba(142, 163, 145, 0.2);
     }
 
     .average-rating {
@@ -447,21 +778,21 @@
     .rating-number {
         font-size: 2.5rem;
         font-weight: bold;
-        color: #5a4b3c;
+        color: var(--primary-dark);
     }
 
     .stars-display {
-        color: #e8dcd1;
+        color: var(--background-light);
         font-size: 1.8rem;
         letter-spacing: 0.2rem;
     }
 
     .stars-display .filled {
-        color: #5a4b3c;
+        color: var(--primary-dark);
     }
 
     .total-reviews {
-        color: #666;
+        color: var(--text-color);
         margin-top: 0.5rem;
     }
 
@@ -490,7 +821,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #5a4b3c;
+    background: var(--gradient-primary);
     color: white;
     border: none;
     border-radius: 50%;
@@ -501,14 +832,27 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    font-size: 1.5rem;
-    box-shadow: 0 2px 8px rgba(90,75,60,0.15);
+    box-shadow: 0 4px 15px var(--shadow-color);
     z-index: 2;
+    padding: 0;
+}
+
+.carousel-arrow {
+    width: 24px;
+    height: 24px;
+    color: white;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
 }
 
 .carousel-button:hover {
-    background: #7a6650;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
     transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+.carousel-button:hover .carousel-arrow {
+    transform: scale(1.1);
 }
 
 .carousel-button.prev {
@@ -530,10 +874,18 @@
     opacity: 0.5;
     pointer-events: none;
 }    .review-card {
-        background: #f3efeb;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(90,75,60,0.07);
+        background: var(--background-light);
+        border-radius: 20px;
+        box-shadow: 0 4px 15px var(--shadow-color);
         padding: 1.5rem;
+        border: 1px solid rgba(142, 163, 145, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px var(--shadow-color);
+        border-color: var(--primary-color);
     }
 
     .review-header {
@@ -545,22 +897,23 @@
 
     .review-author {
         font-weight: bold;
-        color: #5a4b3c;
+        color: var(--primary-dark);
     }
 
     .review-rating {
-        color: #5a4b3c;
+        color: var(--primary-dark);
         letter-spacing: 0.1rem;
     }
 
     .review-content {
-        color: #333;
+        color: var(--text-color);
         margin-bottom: 1rem;
         line-height: 1.5;
     }
 
     .review-date {
-        color: #666;
+        color: var(--text-color);
+        opacity: 0.7;
         font-size: 0.9rem;
     }
 
@@ -568,17 +921,20 @@
         display: block;
         margin: 2rem auto;
         padding: 0.8rem 2rem;
-        background: #5a4b3c;
+        background: var(--gradient-primary);
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 25px;
         font-weight: bold;
         cursor: pointer;
-        transition: background-color 0.2s;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px var(--shadow-color);
     }
 
     .add-review-btn:hover {
-        background: #7a6650;
+        background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-color);
     }
 
     .modal {
@@ -772,12 +1128,12 @@
     <div class="header-flex">
         <div class="header-info">
             <h1 style="margin-bottom: 0.3rem;">Laura Martínez Ortega</h1>
-            <p style="margin-top: 0; font-size: 1rem;">Psicología Online con Empatía y Profesionalismo</p>
+            <p style="margin-top: 0.5rem; font-size: 1.2rem; color: var(--accent-color); font-weight: 500; letter-spacing: 1px;">~ Psicóloga General Sanitaria ~</p>
             <div class="social-icons">
                 <a href="https://instagram.com/lauramartinezortega.psicologa" target="_blank" rel="noopener">
                     <img src="../social-icons/instagram.svg" alt="Instagram" class="social-icon">
                 </a>
-                <a href="https://linkedin.com/in/tu_perfil" target="_blank" rel="noopener">
+                <a href="https://www.linkedin.com/in/laura-martínez-ortega-5ab1901b0" target="_blank" rel="noopener">
                     <img src="../social-icons/linkedin.svg" alt="LinkedIn" class="social-icon">
                 </a>
             </div>
@@ -801,56 +1157,129 @@
 
 <section id="inicio">
     <h2>¡Te doy la bienvenida!</h2>
-    <p>Este es un espacio seguro para tu bienestar emocional, ayudo a personas que estén en búsqueda o transitandola maternidad.</p>
-    <p>Acompañamiento psicológico online desde la empatía, la ciencia y el corazón, para todas las personas</p>
+    <p>Este es un espacio seguro para tu bienestar emocional, puedo ayudarte si estás en búsqueda o transitando la maternidad. También puedo acompañarte si estás atravesando una crisis vital y sientes que todo se vuelve demasiado. Quiero que sepas que no tienes que enfrentarlo en soledad</p>
+    <p>Te ofrezco un espacio seguro, sin jucios, donde podrás hablar de lo que estás viviendo y encontrar una guía para orientarte en este momento.</p>
 </section>
 
 <section id="sobre-mi">
   <div class="sobre-mi-flex">
     <div class="sobre-mi-texto">
       <h2>Sobre mí</h2>
-      <p>Soy Laura, soy <strong>Psicóloga General Sanitaria</strong>, colegiada en el Colegio Oficial de Psicología de la Comunidad Valenciana, con formación en <strong>Psicología Perinatal</strong> y <strong>Neuropsicología Clínica</strong>.</p>
-      <p>Durante años he trabajado como neuropsicóloga clínica, acompañando a personas con daño cerebral adquirido, patología dual y trastornos del neurodesarrollo. Cada uno de esos procesos me ha enseñado algo valioso sobre la <strong>resiliencia</strong>, la <strong>vulnerabilidad</strong> y la <strong>fuerza del ser humano</strong>.</p>
-      <p>Mi propia maternidad marcó un antes y un después. Fue una experiencia profundamente transformadora que me llevó a reenfocar mi vocación. Viví en carne propia lo intensas que pueden ser las emociones en esta etapa vital, los desafíos, las dudas, los miedos... pero también el amor, la conexión y la necesidad de sentirse acompañada. Fue ahí donde nació mi deseo de acompañar a otras personas que, como yo, están transitando el camino de la maternidad.</p>
-      <p>Desde entonces, decidí enfocar mi labor en acompañar a otras mujeres, familias y personas que están transitando esta etapa vital. Porque creo firmemente que no tenemos que vivir la maternidad ni la crianza en soledad. Merecemos espacios de escucha, de comprensión y de sostén.</p>
+      <p>Soy Laura Martínez Ortega, Psicóloga General Sanitaria, colegiada en el Colegio Oficial de Psicología de la Comunidad Valenciana (CV 18843), con formación en Psicología Perinatal y Neuropsicología Clínica.</p>
+      <p>Durante años trabajé como neuropsicóloga clínica. Acompañé a personas y familias que tuvieron que reconstruirse después de un daño cerebral adquirido, a quienes convivían con patología dual y a personas con trastornos del neurodesarrollo. De cada una de ellas aprendí algo diferente, pero todas me enseñaron lo mismo: la resiliencia, la vulnerabilidad y la enorme fuerza del ser humano.</p>
+      <p>Una experiencia que cambió profundamente mi manera de entender la vida y mi vocación: la maternidad. Antes de poder vivirla y disfrutarla, pasé por una pérdida gestacional que atravesé en silencio. Fue un momento duro, que me marcó y que también condicionó la futura llegada de la que hoy es mi mayor alegría: mi hija. Durante mi embarazo, el acompañamiento psicológico fue fundamental para gestionar los miedos, las dudas y la ansiedad, y me permitió preparar la llegada de manera más consciente y emocionalmente saludable.</p>
+      <p>Esa vivencia me hizo comprender, desde dentro, lo intensas que pueden ser las emociones en esta etapa vital. Los miedos, las dudas, la culpa, la soledad, pero también la esperanza, el amor y la necesidad profunda de sentirse acompañada.</p>
+      <p>Por eso decidí dar un giro a mi camino profesional y dedicarme a acompañar a familias en todas las fases de la maternidad y la crianza. Porque creo firmemente que no tenemos que vivirlo en soledad. </p>
+      <p>Necesitamos y merecemos espacios donde poder ser nosotras mismas, con nuestras emociones, nuestras historias y nuestras luces y sombras.</p>
+      <p>Siento también una especial sensibilidad hacia las personas que se enfrentan a dificultades para concebir, aquellas que están atravesando procesos de reproducción asistida, y quienes en algún momento deciden poner fin a ese camino. Sé lo complejo y doloroso que puede ser, y quiero ofrecer un acompañamiento respetuoso, humano y libre de juicios.</p>
       <!--
-      <p>Hoy estoy especializada en <strong>psicología perinatal</strong>, y tengo especial sensibilidad hacia quienes están viviendo un proceso de <strong>reproducción asistida</strong>. Sé que no es un camino fácil: está lleno de esperanza, pero también de incertidumbre, silencios, miedos, pruebas y decisiones difíciles. Muchas veces se vive en soledad, sin un espacio donde poder hablar sin juicios ni tabúes.</p>
+      <p>Hoy estoy especializada en psicología perinatal, y tengo especial sensibilidad hacia quienes están viviendo un proceso de reproducción asistida. Sé que no es un camino fácil: está lleno de esperanza, pero también de incertidumbre, silencios, miedos, pruebas y decisiones difíciles. Muchas veces se vive en soledad, sin un espacio donde poder hablar sin juicios ni tabúes.</p>
       -->
-      <p>Por eso he decidido crear un <strong>espacio terapéutico online pensado para ti</strong>: una consulta cálida, respetuosa y segura, donde puedas ser tú misma, con tus emociones a flor de piel, tus dudas, tu historia única. Mi objetivo es que te sientas sostenida, comprendida y acompañada durante todo el proceso, ya sea que estés comenzando con los tratamientos, en medio del recorrido, atravesando un duelo, o disfrutando —con todo lo que eso implica— del embarazo tan deseado.</p>
-      <p>Actualmente sigo formándome en reproducción asistida para ofrecerte un acompañamiento actualizado, sensible y humano.</p>
-      <p><strong>Estás en tu momento. Y no tienes por qué vivirlo sola.</strong></p>
+      <p>He creado un espacio terapéutico pensado para ti: un lugar cálido, respetuoso y seguro, donde puedas sentirte sostenida y comprendida. Ya sea que estés comenzando un tratamiento de reproducción asistida, atravesando un duelo, transitando un embarazo o viviendo la intensidad del posparto, aquí encontrarás un acompañamiento humano, actualizado y sensible.</p>
+      <p>Estás en tu momento. Y no tienes por qué vivirlo en soledad.</p>
     </div>
     <div class="sobre-mi-img">
-      <div style="width:260px;height:260px;display:flex;align-items:center;justify-content:center;border:2px dashed #bdbdbd;border-radius:12px;background:#faf9f7;color:#bdbdbd;font-size:1.1rem;margin-left:2rem;text-align:center;">
-        <span>Próximamente<br>foto profesional</span>
-      </div>
+      <img src="../images/foto_profesional.jpg" alt="Laura Martínez Ortega - Psicóloga" style="max-width:350px;width:100%;height:auto;border-radius:12px;margin-left:2rem;box-shadow:0 2px 8px rgba(90,75,60,0.1);"
     </div>
   </div>
 </section>
 
-<section id="servicios">
-    <h2>Servicios</h2>
-    <ul>
-        <li>Terapia Psicológica con Adultos</li>
-        <li>Psicología perinatal</li>
-        <li>Proceso de reproducción asistida</li>
-    </ul>
-    <p><strong>Modalidad:</strong> Online por videollamada<br>
-    <strong>Duración:</strong> 50 minutos<br>
-    <strong>Frecuencia:</strong> Semanal o quincenal</p>
+<section id="valores">
+    <h2>Cuatro valores importantes para mí</h2>
+    <div class="valores-grid">
+        <div class="valor-card">
+            <div class="valor-icon">
+                <img src="../images/heart.png" alt="Empatía y Humanidad" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
+            
+            </div>
+            <h3>Empatía y Humanidad</h3>
+            <p>Cada persona llega a consulta con una historia que merece ser escuchada. Yo también he pasado por momentos difíciles y sé lo que significa necesitar alguien que te entienda de verdad. Por eso, en mi forma de trabajar la empatía y la humanidad son esenciales: no eres un caso, eres una persona, y te acompaño con respeto y calidez en cada paso de tu camino.</p>
+        </div>
+
+        <div class="valor-card">
+            <div class="valor-icon">
+                <img src="../images/privacidad.svg" alt="Privacidad" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
+            </div>
+            <h3>Privacidad</h3>
+            <p>Sé lo importante que es sentirte seguro para hablar con libertad. Lo que compartes en terapia no sale de terapia. Nadie más sabrá lo que cuentas, a menos que tú lo decidas. Siempre tendrás la tranquilidad de que tu información está protegida y cuidada conmigo.</p>
+        </div>
+
+        <div class="valor-card">
+            <div class="valor-icon">
+                <img src="../images/individualidad.svg" alt="Respeto por la Individualidad" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
+            </div>
+            <h3>Respeto por la Individualidad</h3>
+            <p>No hay un único molde ni una sola manera de vivir o de sanar. Cada persona tiene su propio ritmo, su forma de mirar el mundo y sus propias necesidades. Para mí, respetar tu individualidad significa adaptar el proceso a ti, sin forzarte a encajar en lo que "debería ser". Tu camino es único, y mi trabajo es acompañarte a recorrerlo.</p>
+        </div>
+
+        <div class="valor-card">
+            <div class="valor-icon">
+                <img src="../images/formacion.svg" alt="Formación Continua" style="width: 35px; height: 35px; filter: brightness(0) invert(1);">
+            </div>
+            <h3>Formación Continua</h3>
+            <p>La psicología está en constante evolución, y yo con ella. Me esfuerzo por seguir aprendiendo cada día para darte siempre lo mejor de mi profesión y acompañarte con herramientas actualizadas y útiles.</p>
+        </div>
+    </div>
 </section>
 
-<section id="reserva" class="cta">
+<section id="servicios">
+    <h2>Servicios</h2>
+    <p>Te acompaño si estás atravesando alguno de los siguientes procesos:</p>
+    <div class="servicios-grid">
+        <div class="servicio-card">
+            <div class="servicio-icon">
+                <img src="../images/pregnant.png" alt="Procesos de maternidad" loading="lazy">
+            </div>
+            <h3>Procesos relacionados con la maternidad</h3>
+            <p>Acompañamiento especializado en todas las etapas del camino hacia la maternidad.</p>
+            <ul>
+                <li>Apoyo en la búsqueda de embarazo</li>
+                <li>Acompañamiento en procesos de reproducción asistida e infertilidad</li>
+                <li>Acompañamiento en casos de embarazo no planificado</li>
+                <li>Acompañamiento en duelo perinatal</li>
+                <li>Apoyo durante el embarazo y posparto</li>
+            </ul>
+        </div>
+
+        <div class="servicio-card">
+            <div class="servicio-icon">
+                <img src="../images/mind.png" alt="Terapia psicológica" loading="lazy">
+            </div>
+            <h3>Terapia psicológica para adultos</h3>
+            <p>Espacio seguro para tu crecimiento personal y bienestar emocional.</p>
+            <ul>
+                <li>Fomento del crecimiento personal</li>
+                <li>Bienestar emocional y fortalecimiento de la autoestima</li>
+                <li>Desarrollo de estrategias para la adaptación a los desafíos</li>
+                <li>Acompañamiento en procesos de cambio</li>
+            </ul>
+        </div>
+    </div>
+    <p style="text-align: center; margin-top: 2rem;"><strong>Podemos trabajar online desde la comodidad de tu hogar o de manera presencial en Valencia.</strong></p>
+</section>
+
+<section id="reserva">
     <h2>Reserva tu sesión</h2>
-    <p>Elige el día y la hora que mejor te venga. Recibe el enlace de videollamada directamente en tu correo.</p>
-    <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background-color:#25D366;color:white;padding:1rem 2rem;text-decoration:none;border-radius:5px;font-size:1.1rem;font-weight:bold;transition:background 0.2s;box-shadow:0 2px 8px rgba(90,75,60,0.07);">
-        <img src="../images/whatsapp.png" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;" loading="lazy"> Reservar sesión por WhatsApp
-    </a>
+    <div class="servicios-grid">
+        <div class="servicio-card">
+            <h3>Comienza tu camino hacia el bienestar</h3>
+            <p style="margin-bottom: 1.5rem;">Mi objetivo es que sientas apoyo, comprensión y compañía en cada etapa de tu camino.</p>
+            
+            <h4 style="color: var(--primary-dark); margin-bottom: 0.8rem; font-size: 1.1rem;">¿Cómo puedo ayudarte?</h4>
+            <p style="margin-bottom: 1.5rem;">Ofrezco psicoterapia online y presencial en Valencia. Te acompaño en tu proceso si estás atravesando una crisis vital y lo estás pasando mal. Mi enfoque es cognitivo-conductual e integrador, con perspectiva de género, y juntos trabajaremos para que puedas volver a sentirte bien contigo mismo y recuperar la ilusión por la vida.</p>
+
+            <div style="margin-top: 1.5rem;">
+                <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener" class="servicio-button">
+                    <img src="../images/whatsapp.png" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;" loading="lazy">
+                    Reservar tu sesión
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Calendario y formulario temporalmente ocultos
     <br><br>
-    <!-- Calendario profesional Google Calendar -->
     <iframe src="https://calendar.google.com/calendar/embed?src=1907f7eb038b8734efa6539d6a3a4354a64315e8969e48225c74e31834cc4898&ctz=Europe%2FMadrid" style="border: 1px solid #bdbdbd" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
     <br>
-    <!-- Formulario para crear evento dinámico en Google Calendar -->
     <form id="calendarForm" style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;justify-content:center;">
         <label for="fecha" style="font-weight:bold;">Fecha:</label>
         <input type="date" id="fecha" name="fecha" required style="padding:0.3rem 0.5rem;border-radius:4px;border:1px solid #bdbdbd;">
@@ -858,8 +1287,10 @@
         <input type="time" id="hora" name="hora" required style="padding:0.3rem 0.5rem;border-radius:4px;border:1px solid #bdbdbd;">
         <button type="submit" style="background:#4285F4;color:white;padding:0.8rem 1.5rem;border-radius:5px;font-weight:bold;text-decoration:none;font-size:1rem;border:none;cursor:pointer;">Añadir evento a Google Calendar</button>
     </form>
+    -->
     </section>
 
+<!-- Sección de opiniones temporalmente oculta
 <section id="reviews" class="reviews-section">
     <h2>Opiniones de Pacientes</h2>
     <div class="reviews-summary">
@@ -872,10 +1303,13 @@
     
     <div class="reviews-carousel">
         <div class="reviews-track">
-            <!-- Las reseñas se cargarán aquí dinámicamente -->
         </div>
-        <button class="carousel-button prev" onclick="moveCarousel(1)" id="prevButton">←</button>
-        <button class="carousel-button next" onclick="moveCarousel(-1)" id="nextButton">→</button>
+        <button class="carousel-button prev" onclick="moveCarousel(-1)" id="prevButton">
+            <img src="../images/arrow-left.svg" alt="Anterior" class="carousel-arrow">
+        </button>
+        <button class="carousel-button next" onclick="moveCarousel(1)" id="nextButton">
+            <img src="../images/arrow-right.svg" alt="Siguiente" class="carousel-arrow">
+        </button>
     </div>
 
     <button class="add-review-btn" onclick="showReviewForm()">Añadir una opinión</button>
@@ -918,6 +1352,7 @@
         </div>
     </div>
 </section>
+-->
 
 <!-- Link al calendario real es: https://calendar.google.com/calendar/ical/1907f7eb038b8734efa6539d6a3a4354a64315e8969e48225c74e31834cc4898%40group.calendar.google.com/public/basic.ics -->
 <section id="contacto">
@@ -945,8 +1380,7 @@
     <img src="../images/whatsapp.png" alt="WhatsApp" style="width:48px;height:48px;">
 </a>
     <p>Laura Martínez Ortega – Psicología con corazón y ciencia</p>
-    <p style="font-size: 0.9rem;">Psicóloga General Sanitaria - Col. COPCV XXXX<br>
-    NIF: XXXXXXXXX</p>
+    <p style="font-size: 0.9rem;"><strong>Psicóloga General Sanitaria - Col. COPCV CV18843</strong></p>
     <div class="legal-links">
         <a href="../aviso-legal.html">Aviso legal</a> |
         <a href="../privacidad.html">Política de privacidad</a> |

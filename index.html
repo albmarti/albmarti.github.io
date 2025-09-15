@@ -693,6 +693,26 @@
         box-shadow: 0 6px 20px var(--shadow-color);
     }
 
+    /* Fix for mobile button issues */
+    @media (max-width: 768px) {
+        .servicio-button {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            display: inline-block;
+            text-align: center;
+            min-width: 200px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .servicio-button {
+            padding: 0.7rem 1.2rem;
+            font-size: 0.9rem;
+            min-width: 180px;
+        }
+    }
+
     @media (max-width: 768px) {
         .servicios-grid {
             grid-template-columns: 1fr;
@@ -1604,8 +1624,7 @@
 
             <div style="margin-top: 1.5rem;">
                 <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener noreferrer" class="servicio-button">
-                    <img src="images/whatsapp.png" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;" loading="lazy">
-                    Reservar tu sesión
+                    Reserva tu sesión
                 </a>
             </div>
         </div>

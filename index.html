@@ -134,17 +134,21 @@
         }
         .contact-cards {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
             margin-top: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .contact-card {
             background: var(--background-light);
-            border-radius: 20px;
+            border-radius: 15px;
             box-shadow: 0 4px 15px var(--shadow-color);
-            padding: 2rem;
-            min-width: 220px;
+            padding: 1.5rem;
+            min-width: 180px;
+            max-width: 200px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -153,6 +157,7 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(142, 163, 145, 0.2);
             color: inherit;
+            flex: 1;
         }
         .contact-card:hover {
             transform: translateY(-5px);
@@ -161,9 +166,9 @@
         }
         .contact-card h3 {
             margin-top: 0;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: var(--primary-dark);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
         .contact-card a {
             color: var(--primary-color);
@@ -846,6 +851,197 @@
         }
     }
 
+    /* Estilos para la sección de FAQ */
+    .faq-container {
+        max-width: 800px;
+        margin: 2rem auto 0;
+    }
+
+    .faq-item {
+        background: var(--background-light);
+        border-radius: 15px;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 10px var(--shadow-color);
+        border: 1px solid rgba(142, 163, 145, 0.2);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+        box-shadow: 0 4px 15px var(--shadow-color);
+        border-color: var(--primary-color);
+    }
+
+    .faq-question {
+        padding: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        border: none;
+        width: 100%;
+        text-align: left;
+        transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+        background: rgba(196, 165, 157, 0.05);
+    }
+
+    .faq-question h3 {
+        margin: 0;
+        color: var(--primary-dark);
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .faq-toggle {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        font-weight: bold;
+        transition: transform 0.3s ease;
+        min-width: 30px;
+        text-align: center;
+    }
+
+    .faq-item.active .faq-toggle {
+        transform: rotate(45deg);
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background: rgba(196, 165, 157, 0.02);
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 200px;
+    }
+
+    .faq-answer p {
+        padding: 0 1.5rem 1.5rem;
+        margin: 0;
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+
+    /* Estilos para la sección de precios */
+    .precios-simple {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .precio-card {
+        background: var(--background-light);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px var(--shadow-color);
+        border: 1px solid rgba(142, 163, 145, 0.2);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .precio-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px var(--shadow-color);
+        border-color: var(--primary-color);
+    }
+
+
+    .precio-card h3 {
+        color: var(--primary-dark);
+        margin: 0 0 1rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+
+    .precio-amount {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .precio-desc {
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .precio-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem;
+        text-align: left;
+        flex-grow: 1;
+    }
+
+    .precio-features li {
+        color: var(--text-color);
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.5;
+    }
+
+    .precio-features li::before {
+        content: "✓";
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .precio-button {
+        background: var(--gradient-primary);
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px var(--shadow-color);
+        display: inline-block;
+        margin-top: auto;
+    }
+
+    .precio-button:hover {
+        background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-color);
+    }
+
+    .precios-info {
+        background: var(--background-light);
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        text-align: center;
+        border: 1px solid rgba(142, 163, 145, 0.2);
+    }
+
+    .precios-info p {
+        margin: 0.5rem 0;
+        color: var(--text-color);
+    }
+
+    @media (max-width: 768px) {
+        .precios-simple {
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+    }
+
     /* Estilos para la sección de reseñas */
     .reviews-section {
         padding: 2rem;
@@ -1287,6 +1483,8 @@
     <a href="#inicio">Inicio</a>
     <a href="#sobre-mi">Sobre mí</a>
     <a href="#servicios">Servicios</a>
+    <a href="#precios">Precios</a>
+    <a href="#faq">FAQ</a>
     <a href="#reserva">Reserva</a>
     <a href="#contacto">Contacto</a>
 </nav>
@@ -1426,6 +1624,92 @@
     -->
     </section>
 
+<section id="faq">
+    <h2>Preguntas Frecuentes</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Cómo funciona la terapia online?</h3>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>La terapia online se realiza a través de videollamadas seguras y confidenciales. Solo necesitas un dispositivo con cámara y conexión a internet. Es igual de efectiva que la terapia presencial y te permite recibir apoyo desde la comodidad de tu hogar.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Cuánto tiempo dura una sesión?</h3>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Cada sesión tiene una duración de 50 minutos. Este tiempo nos permite profundizar en lo que necesites trabajar mientras respetamos tu ritmo y bienestar.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Con qué frecuencia debo acudir a terapia?</h3>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>La frecuencia se adapta a tus necesidades específicas. Generalmente comenzamos con sesiones semanales, pero podemos ajustar el ritmo según tu situación personal y disponibilidad.</p>
+            </div>
+        </div>
+<!--
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Qué pasa si necesito cancelar una cita?</h3>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Entiendo que pueden surgir imprevistos. Te pido que canceles con al menos 24 horas de antelación. Si cancelas con menos tiempo, se cobrará el 50% de la sesión.</p>
+            </div>
+        </div>
+    -->
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿La terapia online es confidencial?</h3>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Absolutamente. Utilizo plataformas seguras y encriptadas para las videollamadas. Todo lo que compartas en terapia está protegido por el secreto profesional y las leyes de protección de datos.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Seccion Precios Oculta temporalmente
+<section id="precios">
+    <h2>Tarifas y Precios</h2>
+    <div class="precios-simple">
+        <div class="precio-card">
+            <h3>Sesión Individual</h3>
+            <div class="precio-amount">60€</div>
+            <p class="precio-desc">Sesión de 50 minutos</p>
+            <ul class="precio-features">
+                <li>Terapia online o presencial</li>
+                <li>Enfoque personalizado</li>
+                <li>Seguridad y confidencialidad</li>
+                <li>Material de apoyo incluido</li>
+            </ul>
+            <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener noreferrer" class="precio-button">
+                Reservar sesión
+            </a>
+        </div>
+    </div>
+    
+    <div class="precios-info">
+        <p><strong>Formas de pago:</strong> Transferencia bancaria, Bizum o efectivo (solo presencial)</p>
+        <p><strong>Política de cancelación:</strong> Cancelación gratuita con 24h de antelación</p>
+        <p><strong>Descuentos:</strong> Consulta por descuentos para estudiantes y desempleados</p>
+    </div>
+</section>
+-->
+
+
 <!-- Sección de opiniones temporalmente oculta
 <section id="reviews" class="reviews-section">
     <h2>Opiniones de Pacientes</h2>
@@ -1502,6 +1786,10 @@
         <a href="https://wa.link/jmpfcs" target="_blank" rel="noopener noreferrer" class="contact-card">
             <h3>WhatsApp</h3>
             <img src="images/whatsapp.png" alt="WhatsApp" style="width:32px;height:32px;margin-bottom:0.5rem;">
+        </a>
+        <a href="https://instagram.com/lauramartinezortega.psicologa" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <h3>Instagram</h3>
+            <img src="images/instagram_color.jpg" alt="Instagram" style="width:32px;height:32px;margin-bottom:0.5rem;background:none;border:none;">
         </a>
     </div>
 </section>
@@ -1939,6 +2227,29 @@ window.onclick = function(event) {
         closeReviewForm();
     }
 }
+
+// Funcionalidad FAQ
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', function() {
+            const isActive = item.classList.contains('active');
+            
+            // Cerrar todos los FAQ abiertos
+            faqItems.forEach(faqItem => {
+                faqItem.classList.remove('active');
+            });
+            
+            // Abrir el FAQ clickeado si no estaba abierto
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+});
 </script>
 
 </body>

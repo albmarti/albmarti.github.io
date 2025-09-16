@@ -575,6 +575,13 @@
           justify-content: center;
           margin-top: 1rem;
         }
+        .sobre-mi-img img {
+          display: block;
+          width: 100%;
+          height: auto;
+          margin: 0;
+          max-width: 350px;
+        }
         @media (max-width: 900px) {
           .sobre-mi-flex {
             flex-direction: column;
@@ -584,12 +591,20 @@
           .sobre-mi-img {
             margin: 0;
             width: 100%;
-            max-width: 350px;
+            max-width: 450px;
           }
           .sobre-mi-img img {
             margin: 0 !important;
             width: 100%;
             height: auto;
+          }
+        }
+        @media (max-width: 600px) {
+          .sobre-mi-flex {
+            gap: 1.5rem;
+          }
+          .sobre-mi-img {
+            max-width: 100%;
           }
         }
     /* Estilos de la sección de servicios */
@@ -1529,7 +1544,7 @@
       
     </div>
     <div class="sobre-mi-img">
-      <img src="images/foto_profesional_v2.jpg" alt="Laura Martínez Ortega - Psicóloga" style="max-width:350px;width:100%;height:auto;border-radius:12px;margin-left:2rem;box-shadow:0 2px 8px rgba(90,75,60,0.1);">
+      <img src="images/foto_profesional_v2.jpg" alt="Laura Martínez Ortega - Psicóloga" style="max-width:350px;width:100%;height:auto;border-radius:12px;box-shadow:0 2px 8px rgba(90,75,60,0.1);">
     </div>
     <div class="servicio-card" style="margin-top: 1.5rem; width: 100%; box-sizing: border-box; flex: 1 0 100%;">
       <p style="margin: 0;">He creado un espacio terapéutico pensado para ti: un lugar cálido, respetuoso y seguro, donde puedas sentir sostén y comprensión. Ya sea que estés comenzando un tratamiento de reproducción asistida, atravesando un duelo, transitando un embarazo, viviendo la intensidad del posparto, o una crisis vital de la que no ves la salida. Aquí encontrarás un acompañamiento humano, actualizado y sensible.</p>

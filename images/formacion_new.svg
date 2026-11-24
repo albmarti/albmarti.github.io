@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Cerebro estilizado representando formación continua -->
+    <path d="M12 4C8 4 4 7 4 12C4 17 8 20 12 20C16 20 20 17 20 12C20 7 16 4 12 4Z" stroke="#b85f44" stroke-width="2" fill="none"/>
+    <!-- Símbolo de infinito para representar continuidad -->
+    <path d="M9 12C9 10 10 9 12 9C14 9 15 10 15 12C15 14 14 15 12 15C10 15 9 14 9 12Z" stroke="#b85f44" stroke-width="2" fill="none"/>
+    <!-- Flechas circulares representando el proceso continuo -->
+    <path d="M7 10C7 8 8 7 9 7M17 14C17 16 16 17 15 17" stroke="#b85f44" stroke-width="2" stroke-linecap="round"/>
+    <!-- Puntos de conocimiento -->
+    <circle cx="12" cy="9" r="1" fill="#b85f44"/>
+    <circle cx="12" cy="15" r="1" fill="#b85f44"/>
+</svg>

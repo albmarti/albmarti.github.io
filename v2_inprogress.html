@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Psicóloga Laura Martínez | Terapia online | Psicología perinatal</title>
-    <meta name="description" content="Acompañamiento psicológico online. Maternidad e infertilidad.">
-    <meta name="keywords" content="psicóloga online, terapia online, psicología perinatal, reproducción asistida, psicóloga infertilidad, Laura Martínez Ortega, autoestima, crecimiento personal, acompañamiento psicológico">
+    <title>Laura Martínez | Psicóloga Online de Maternidad y procesos reproductivos</title>
+    <meta name="description" content="Psicóloga especialista en psicología perinatal, reproducción asistida y ansiedad. Terapia online personalizada para encontrar tu bienestar emocional.">
+    <meta name="keywords" content="psicóloga online, terapia online, psicología perinatal, reproducción asistida, psicóloga infertilidad, Laura Martínez Ortega, autoestima, crecimiento personal, ansiedad, maternidad">
     <meta name="author" content="Laura Martínez Ortega">
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Laura Martínez Ortega - Psicóloga General Sanitaria">
-    <meta property="og:description" content="Acompañamiento psicológico online. Maternidad e infertilidad.">
+    <meta property="og:title" content="Laura Martínez | Psicóloga Online de Maternidad y procesos reproductivos">
+    <meta property="og:description" content="Psicóloga especialista en psicología perinatal, reproducción asistida y ansiedad. Terapia online personalizada para encontrar tu bienestar emocional.">
     <meta property="og:image" content="https://lauramartinezortegapsicologia.es/images/Logo.png">
     <meta property="og:url" content="https://lauramartinezortegapsicologia.es">
     
@@ -242,6 +242,23 @@
         .social-icon:hover {
             opacity: 0.8;
         }
+        .header-cta-button {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(184, 95, 68, 0.2);
+        }
+        .header-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(184, 95, 68, 0.3);
+            background: #c76e53;
+        }
         @media (max-width: 800px) {
             .header-flex {
                 flex-direction: column;
@@ -344,6 +361,17 @@
             max-width: 900px;
             margin: auto;
         }
+        section h1.main-heading {
+            color: var(--primary-dark);
+            font-size: 2.4rem;
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            text-align: center;
+            width: 100%;
+            line-height: 1.3;
+        }
+        
         section h2 {
             color: var(--primary-dark);
             font-size: 2.2rem;
@@ -352,6 +380,11 @@
             padding-bottom: 1rem;
             text-align: center;
             width: 100%;
+        }
+        
+        .cta-inicio {
+            text-align: center;
+            margin-top: 2rem;
         }
         
         section h2::after {
@@ -823,6 +856,65 @@
         .cookie-buttons {
             width: 100%;
             justify-content: center;
+        }
+    }
+
+    /* Estilos para la sección de elementos de confianza */
+    .trust-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .trust-element {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 280px;
+        padding: 1.5rem;
+        background: var(--background-light);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px var(--shadow-color);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(142, 163, 145, 0.2);
+    }
+    
+    .trust-element:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px var(--shadow-color);
+    }
+    
+    .trust-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+    }
+    
+    .trust-element p {
+        margin: 0;
+        line-height: 1.5;
+        color: var(--text-color);
+    }
+    
+    .trust-element strong {
+        color: var(--primary-dark);
+        font-size: 1.1rem;
+    }
+    
+    @media (max-width: 768px) {
+        .trust-container {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .trust-element {
+            width: 100%;
+            max-width: 280px;
         }
     }
 
@@ -1491,7 +1583,10 @@
         <div class="header-info">
             <h1 style="margin-bottom: 0.3rem;">Laura Martínez Ortega</h1>
             <p style="margin-top: 0.5rem; font-size: 1.2rem; color: var(--accent-color); font-weight: 500; letter-spacing: 1px;">~ Psicóloga General Sanitaria ~</p>
-            <div class="social-icons">
+            <div class="header-cta" style="margin-top: 0.8rem;">
+                <a href="#reserva" class="header-cta-button">Pedir Cita</a>
+            </div>
+            <div class="social-icons" style="margin-top: 1rem;">
                 <a href="https://instagram.com/lauramartinezortega.psicologa" target="_blank" rel="noopener noreferrer">
                     <img src="social-icons/instagram.svg" alt="Instagram" class="social-icon">
                 </a>
@@ -1520,9 +1615,30 @@
 </nav>
 
 <section id="inicio">
-    <h2>¡Te doy la bienvenida!</h2>
-    <p>Este es un espacio seguro para tu bienestar emocional, puedo ayudarte si estás en búsqueda o transitando la maternidad. También puedo acompañarte si estás atravesando una crisis vital y sientes que todo se vuelve demasiado. Quiero que sepas que no tienes que enfrentarlo en soledad.</p>
-    <p>Te ofrezco un refugio sin juicios, donde podrás hablar de lo que estás viviendo y encontrar una guía para orientarte en este momento.</p>
+    <h1 class="main-heading">Psicóloga Especialista en etapa perinatal, duelos e infertilidad: Encuentra tu bienestar y recupera la calma</h1>
+    <p>Este es un espacio seguro para tu bienestar emocional, diseñado especialmente si estás en búsqueda o transitando la maternidad, atravesando un proceso de reproducción asistida, o enfrentando momentos de ansiedad y crisis vitales. Quiero que sepas que no tienes que enfrentarlo en soledad.</p>
+    <p>Te ofrezco un refugio sin juicios, donde podrás hablar libremente de lo que estás viviendo y encontrar una guía profesional para orientarte en este momento de tu vida.</p>
+    <div class="cta-inicio">
+        <a href="#reserva" class="servicio-button">Reserva tu primera sesión</a>
+    </div>
+</section>
+
+<section id="trust-elements">
+    <h2>Profesionalidad y Experiencia</h2>
+    <div class="trust-container">
+        <div class="trust-element">
+            <img src="images/verified-check-svgrepo-com.svg" alt="Verificado" class="trust-icon">
+            <p><strong>Colegiada Nº CV18843</strong><br>Colegio Oficial de Psicología de la Comunidad Valenciana</p>
+        </div>
+        <div class="trust-element">
+            <img src="images/star-svgrepo-com.svg" alt="Especialidad" class="trust-icon">
+            <p><strong>Especialista en</strong><br>Psicología Perinatal y Reproducción Asistida</p>
+        </div>
+        <div class="trust-element">
+            <img src="images/heart.png" alt="Experiencia" class="trust-icon">
+            <p><strong>+ 8 años</strong><br>de experiencia en acompañamiento psicológico</p>
+        </div>
+    </div>
 </section>
 
 <section id="sobre-mi">
@@ -1807,6 +1923,60 @@
 -->
 
 <!-- Link al calendario real es: https://calendar.google.com/calendar/ical/1907f7eb038b8734efa6539d6a3a4354a64315e8969e48225c74e31834cc4898%40group.calendar.google.com/public/basic.ics -->
+
+<section id="testimonios">
+    <h2>Lo que dicen mis pacientes</h2>
+    <div class="reviews-summary">
+        <div class="average-rating">
+            <span class="rating-number">4.9</span>
+            <div class="stars-display">★★★★★</div>
+            <span class="total-reviews">32 opiniones</span>
+        </div>
+    </div>
+    
+    <div class="reviews-carousel">
+        <button id="prevButton" class="carousel-button prev" onclick="moveCarousel(1)">
+            <img src="images/arrow-left.svg" alt="Anterior" class="carousel-arrow">
+        </button>
+        
+        <div class="reviews-track">
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Ana M.</span>
+                    <div class="review-rating">★★★★★</div>
+                </div>
+                <div class="review-content">Gracias a Laura he podido superar el duelo gestacional que tuve. Su acompañamiento ha sido clave para encontrarme mejor y afrontar mi nueva maternidad con calma y esperanza.</div>
+                <div class="review-date">15/07/2025</div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Carlos T.</span>
+                    <div class="review-rating">★★★★★</div>
+                </div>
+                <div class="review-content">Cuando comencé terapia con Laura estaba lleno de ansiedad. Sus técnicas y su forma de escuchar han sido fundamentales para recuperar mi bienestar. Totalmente recomendable.</div>
+                <div class="review-date">03/06/2025</div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Lucía R.</span>
+                    <div class="review-rating">★★★★★</div>
+                </div>
+                <div class="review-content">Durante mi proceso de fertilidad me sentí muy acompañada por Laura. Su enfoque profesional pero cercano me ayudó a manejar la incertidumbre y las emociones complejas de este camino.</div>
+                <div class="review-date">22/05/2025</div>
+            </div>
+        </div>
+        
+        <button id="nextButton" class="carousel-button next" onclick="moveCarousel(-1)">
+            <img src="images/arrow-right.svg" alt="Siguiente" class="carousel-arrow">
+        </button>
+    </div>
+    
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="#reserva" class="servicio-button">Comienza tu proceso terapéutico</a>
+    </div>
+</section>
 
 <section id="contacto">
     <h2>Contacto</h2>
